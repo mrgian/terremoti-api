@@ -14,29 +14,33 @@ public class Terremoto {
     private String localita;
     private String profondita;
 
+    public Terremoto(String tweet) {
+        parseTweet(tweet);
+    }
+
     /**
-     * Questo costruttore effettua il parsing assegnando alle singole variabili i
-     * valori ricavati
+     * Effettua il parsing del testo del tweet assegnando i valori ricavati alle
+     * singole variabili
      * 
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
-    public Terremoto(String tweet) {
-        this.magnitudo = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
+    void parseTweet(String tweet) {
+        setMagnitudo(Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore ")));
 
-        this.ora = StringUtils.substringBetween(tweet, " ore ", " IT ");
+        setOra(StringUtils.substringBetween(tweet, " ore ", " IT "));
 
-        this.data = null;
-        this.localita = null;
+        setData(null);
+        setLocalita(null);
         if (tweet.contains(" a ")) {
-            this.data = StringUtils.substringBetween(tweet, " del ", " a ");
-            this.localita = StringUtils.substringBetween(tweet, " a ", " Prof=");
+            setData(StringUtils.substringBetween(tweet, " del ", " a "));
+            setLocalita(StringUtils.substringBetween(tweet, " a ", " Prof="));
         }
         if (tweet.contains(", ")) {
-            this.data = StringUtils.substringBetween(tweet, " del ", ", ");
-            this.localita = StringUtils.substringBetween(tweet, ",  ", " Prof=");
+            setData(StringUtils.substringBetween(tweet, " del ", ", "));
+            setLocalita(StringUtils.substringBetween(tweet, ",  ", " Prof="));
         }
 
-        this.profondita = StringUtils.substringBetween(tweet, "Prof=", " #INGV");
+        setProfondita(StringUtils.substringBetween(tweet, "Prof=", " #INGV"));
     }
 
     public float getMagnitudo() {
