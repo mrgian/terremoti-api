@@ -14,6 +14,7 @@ import org.springframework.util.ResourceUtils;
 public class TwitterWebClientConfig {
     private String baseUrl;
     private String token;
+    private String user;
 
     /**
      * Questo costruttore viene utilizzato quando vengono forniti il baseUrl e il
@@ -21,10 +22,12 @@ public class TwitterWebClientConfig {
      * 
      * @param baseUrl Url base della API di Twitter
      * @param token   Token per l'autenticazione alla API di Twitter
+     * @param user    Nome utente Twitter dai cui scaricare i tweet
      */
-    public TwitterWebClientConfig(String baseUrl, String token) {
+    public TwitterWebClientConfig(String baseUrl, String token, String user) {
         this.setBaseUrl(baseUrl);
         this.setToken(token);
+        this.setUser(user);
     }
 
     /**
@@ -42,6 +45,7 @@ public class TwitterWebClientConfig {
 
             this.setBaseUrl(jsonNode.get("baseUrl").textValue());
             this.setToken(jsonNode.get("token").textValue());
+            this.setUser(jsonNode.get("user").textValue());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,5 +90,13 @@ public class TwitterWebClientConfig {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }
