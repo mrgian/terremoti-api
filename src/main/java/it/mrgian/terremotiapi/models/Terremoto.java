@@ -2,6 +2,11 @@ package it.mrgian.terremotiapi.models;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * Classe che gestisce le informazioni su un terremoto
+ * 
+ * @author Gianmatteo Palmieri
+ */
 public class Terremoto {
     private float magnitudo;
     private String ora;
@@ -9,8 +14,15 @@ public class Terremoto {
     private String localita;
     private String profondita;
 
+    /**
+     * Questo costruttore effettua il parsing assegnando alle singole variabili i
+     * valori ricavati
+     * 
+     * @param tweet Testo del tweet contenente le informazioni sul terremoto
+     */
     public Terremoto(String tweet) {
         this.magnitudo = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
+
         this.ora = StringUtils.substringBetween(tweet, " ore ", " IT ");
 
         this.data = null;
