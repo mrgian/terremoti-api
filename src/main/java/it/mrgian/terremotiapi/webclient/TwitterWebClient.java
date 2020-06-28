@@ -50,8 +50,11 @@ public class TwitterWebClient {
 
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode tweets = objectMapper.readTree(responseString);
-            tweets.get("statuses").forEach(tweet -> terremoti.add(new Terremoto(tweet.get("full_text").asText())));
-
+            tweets.get("statuses").forEach(tweet -> {
+                String tweetText = tweet.get("full_text").asText();
+                if (tweetText.contains("[DATI #RIVISTI]"))
+                    terremoti.add(new Terremoto(tweetText));
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

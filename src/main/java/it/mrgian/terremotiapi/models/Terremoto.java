@@ -2,13 +2,16 @@ package it.mrgian.terremotiapi.models;
 
 import org.apache.commons.lang.StringUtils;
 
+import it.mrgian.terremotiapi.models.magnitudo.Magnitudo;
+import it.mrgian.terremotiapi.models.magnitudo.TipoMagnitudo;
+
 /**
  * Classe che gestisce le informazioni su un terremoto
  * 
  * @author Gianmatteo Palmieri
  */
 public class Terremoto {
-    private float magnitudo;
+    private Magnitudo magnitudo;
     private String ora;
     private String data;
     private String localita;
@@ -25,25 +28,40 @@ public class Terremoto {
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
     void parseTweet(String tweet) {
-        setMagnitudo(Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore ")));
 
-        setOra(StringUtils.substringBetween(tweet, " ore ", " IT "));
+        try {
+            if (tweet.contains(" ML ")) {
+                float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
+                TipoMagnitudo tipo = TipoMagnitudo.ML;
+                setMagnitudo(valore, tipo);
+            }
 
-        setData(null);
-        setLocalita(null);
-        if (tweet.contains(" a ")) {
-            setData(StringUtils.substringBetween(tweet, " del ", " a "));
-            setLocalita(StringUtils.substringBetween(tweet, " a ", " Prof="));
+            if (tweet.contains(" Mw ")) {
+                float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
+                TipoMagnitudo tipo = TipoMagnitudo.Mw;
+                setMagnitudo(valore, tipo);
+            }
+
+            setOra(StringUtils.substringBetween(tweet, " ore ", " IT "));
+
+            if (tweet.contains(" a ")) {
+                setData(StringUtils.substringBetween(tweet, " del ", " a "));
+                setLocalita(StringUtils.substringBetween(tweet, " a ", " Prof="));
+            }
+            if (tweet.contains(", ")) {
+                setData(StringUtils.substringBetween(tweet, " del ", ", "));
+                setLocalita(StringUtils.substringBetween(tweet, ", ", " Prof="));
+            }
+
+            setProfondita(StringUtils.substringBetween(tweet, "Prof=", " #INGV"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if (tweet.contains(", ")) {
-            setData(StringUtils.substringBetween(tweet, " del ", ", "));
-            setLocalita(StringUtils.substringBetween(tweet, ",  ", " Prof="));
-        }
 
-        setProfondita(StringUtils.substringBetween(tweet, "Prof=", " #INGV"));
     }
 
-    public float getMagnitudo() {
+    public Magnitudo getMagnitudo() {
         return magnitudo;
     }
 
@@ -79,8 +97,18 @@ public class Terremoto {
         this.ora = ora;
     }
 
-    public void setMagnitudo(float magnitudo) {
-        this.magnitudo = magnitudo;
+    public void setMagnitudo(float valore, TipoMagnitudo tipo) {
+        this.magnitudo = new Magnitudo(valore, tipo);
+    }
+
+    public String toString() {
+        String string = "Magnitudo: " + getMagnitudo().getTipo() + " " + getMagnitudo().getValore() + "\n";
+        string += "Ora: " + getOra() + "\n";
+        string += "Data: " + getData() + "\n";
+        string += "Località: " + getLocalita() + "\n";
+        string += "Profondità: " + getProfondita() + "\n";
+
+        return string;
     }
 
 }
