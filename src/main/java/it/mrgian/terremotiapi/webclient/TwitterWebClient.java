@@ -2,12 +2,15 @@ package it.mrgian.terremotiapi.webclient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
+
+import it.mrgian.terremotiapi.models.Terremoto;
 
 /**
  * Classe per gestire il web client che effettua le richeste all'API di Twitter
@@ -31,8 +34,8 @@ public class TwitterWebClient {
                 .defaultHeader("Authorization", "Bearer " + config.getToken()).build();
     }
 
-    public List<String> getLatestTerremotiTweets() {
-        List<String> tweets = new ArrayList<>();
+    public List<Terremoto> getLatestTerremoti() {
+        List<Terremoto> terremoti = new ArrayList<>();
 
         try {
             ResponseSpec response;
@@ -46,15 +49,14 @@ public class TwitterWebClient {
             String responseString = response.bodyToMono(String.class).block();
 
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode;
-            jsonNode = objectMapper.readTree(responseString);
-            jsonNode.get("statuses").forEach(node -> tweets.add(node.get("full_text").asText()));
+            JsonNode tweets = objectMapper.readTree(responseString);
+            tweets.get("statuses").forEach(tweet -> terremoti.add(new Terremoto(tweet.get("full_text").asText())));
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
-        return tweets;
+        return terremoti;
     }
 
     public TwitterWebClientConfig getConfig() {
