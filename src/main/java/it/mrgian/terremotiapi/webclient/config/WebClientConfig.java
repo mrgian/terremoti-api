@@ -3,6 +3,8 @@ package it.mrgian.terremotiapi.webclient.config;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,8 +39,8 @@ public class WebClientConfig {
         String config = "";
 
         try {
-            File configFile = ResourceUtils.getFile("classpath:defaultConfig.json");
-            BufferedReader reader = new BufferedReader(new FileReader(configFile));
+            InputStreamReader stream = new InputStreamReader(getClass().getResourceAsStream("/defaultConfig.json"));
+            BufferedReader reader = new BufferedReader(stream);
 
             String line;
             while ((line = reader.readLine()) != null)
