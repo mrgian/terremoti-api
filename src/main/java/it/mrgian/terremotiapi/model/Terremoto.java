@@ -15,7 +15,7 @@ public class Terremoto {
     private String ora;
     private String data;
     private String localita;
-    private String profondita;
+    private float profondita;
 
     public Terremoto(String tweet) {
         parseTweet(tweet);
@@ -28,22 +28,25 @@ public class Terremoto {
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
     void parseTweet(String tweet) {
-
         try {
+            // parsing magnitudo locale
             if (tweet.contains(" ML ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
                 TipoMagnitudo tipo = TipoMagnitudo.ML;
                 setMagnitudo(valore, tipo);
             }
 
+            // parsing magnitudo momento
             if (tweet.contains(" Mw ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
                 TipoMagnitudo tipo = TipoMagnitudo.Mw;
                 setMagnitudo(valore, tipo);
             }
 
+            // parsing ora
             setOra(StringUtils.substringBetween(tweet, " ore ", " IT "));
 
+            // parsing data e località
             if (tweet.contains(" a ")) {
                 setData(StringUtils.substringBetween(tweet, " del ", " a "));
                 setLocalita(StringUtils.substringBetween(tweet, " a ", " Prof="));
@@ -53,7 +56,8 @@ public class Terremoto {
                 setLocalita(StringUtils.substringBetween(tweet, ", ", " Prof="));
             }
 
-            setProfondita(StringUtils.substringBetween(tweet, "Prof=", " #INGV"));
+            // parsing profonodità
+            setProfondita(Float.parseFloat(StringUtils.substringBetween(tweet, "Prof=", "Km #INGV")));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,11 +69,11 @@ public class Terremoto {
         return magnitudo;
     }
 
-    public String getProfondita() {
+    public float getProfondita() {
         return profondita;
     }
 
-    public void setProfondita(String profondita) {
+    public void setProfondita(float profondita) {
         this.profondita = profondita;
     }
 
