@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import it.mrgian.terremotiapi.models.Terremoto;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
-import it.mrgian.terremotiapi.webclient.TwitterWebClientConfig;
+import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
 @SpringBootApplication
 public class Main {

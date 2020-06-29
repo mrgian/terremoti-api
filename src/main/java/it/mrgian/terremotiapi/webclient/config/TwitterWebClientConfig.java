@@ -1,4 +1,4 @@
-package it.mrgian.terremotiapi.webclient;
+package it.mrgian.terremotiapi.webclient.config;
 
 import java.io.*;
 

@@ -1,5 +1,7 @@
 package it.mrgian.terremotiapi.webclient;
 
+import it.mrgian.terremotiapi.webclient.config.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
