@@ -1,6 +1,5 @@
 package it.mrgian.terremotiapi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
