@@ -18,7 +18,7 @@ import it.mrgian.terremotiapi.models.Terremoto;
  * 
  * @author Gianmatteo Palmieri
  */
-public class TwitterWebClient {
+public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebClient {
     private TwitterWebClientConfig config;
     private WebClient webClient;
 
