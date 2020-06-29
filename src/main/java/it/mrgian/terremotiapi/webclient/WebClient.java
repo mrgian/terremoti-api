@@ -2,7 +2,7 @@ package it.mrgian.terremotiapi.webclient;
 
 import java.util.List;
 
-import it.mrgian.terremotiapi.models.Terremoto;
+import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
 public interface WebClient {

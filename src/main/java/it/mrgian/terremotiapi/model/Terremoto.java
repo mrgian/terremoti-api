@@ -1,9 +1,9 @@
-package it.mrgian.terremotiapi.models;
+package it.mrgian.terremotiapi.model;
 
 import org.apache.commons.lang.StringUtils;
 
-import it.mrgian.terremotiapi.models.magnitudo.Magnitudo;
-import it.mrgian.terremotiapi.models.magnitudo.TipoMagnitudo;
+import it.mrgian.terremotiapi.model.magnitudo.Magnitudo;
+import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
 
 /**
  * Classe che gestisce le informazioni su un terremoto

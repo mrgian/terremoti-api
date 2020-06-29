@@ -1,4 +1,4 @@
-package it.mrgian.terremotiapi.models.magnitudo;
+package it.mrgian.terremotiapi.model.magnitudo;
 
 public class Magnitudo {
     private float valore;

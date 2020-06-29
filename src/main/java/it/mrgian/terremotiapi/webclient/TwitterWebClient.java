@@ -1,5 +1,6 @@
 package it.mrgian.terremotiapi.webclient;
 
+import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.util.ArrayList;
@@ -8,16 +9,16 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
-
-import it.mrgian.terremotiapi.models.Terremoto;
 
 /**
  * Classe per gestire il web client che effettua le richeste all'API di Twitter
  * 
  * @author Gianmatteo Palmieri
  */
+@Service
 public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebClient {
     private TwitterWebClientConfig config;
     private WebClient webClient;

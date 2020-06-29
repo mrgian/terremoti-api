@@ -1,5 +1,8 @@
 package it.mrgian.terremotiapi.webclient.config;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TwitterWebClientConfig extends WebClientConfig {
     private String user;
 
