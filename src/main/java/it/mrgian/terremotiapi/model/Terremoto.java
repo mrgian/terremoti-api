@@ -2,6 +2,7 @@ package it.mrgian.terremotiapi.model;
 
 import org.apache.commons.lang.StringUtils;
 
+import io.netty.util.internal.StringUtil;
 import it.mrgian.terremotiapi.model.magnitudo.Magnitudo;
 import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
 
@@ -16,6 +17,7 @@ public class Terremoto {
     private String data;
     private String localita;
     private float profondita;
+    private String link;
 
     public Terremoto(String tweet) {
         parseTweet(tweet);
@@ -58,6 +60,9 @@ public class Terremoto {
 
             // parsing profonodità
             setProfondita(Float.parseFloat(StringUtils.substringBetween(tweet, "Prof=", "Km #INGV")));
+
+            // parsing link
+            setLink(StringUtils.right(tweet, 23));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,6 +108,14 @@ public class Terremoto {
 
     public void setMagnitudo(float valore, TipoMagnitudo tipo) {
         this.magnitudo = new Magnitudo(valore, tipo);
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String toString() {
