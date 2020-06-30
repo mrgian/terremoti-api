@@ -25,7 +25,7 @@ public class Terremoto {
     @JsonPropertyDescription("Luogo in cui è avvenuto il terremoto")
     private String localita;
 
-    @JsonPropertyDescription("Profondità alla quale è avvenuto il terremoto")
+    @JsonPropertyDescription("Profondità in km alla quale è avvenuto il terremoto")
     private float profondita;
 
     @JsonPropertyDescription("Link da seguire per maggiori informazioni sul terremoto")
@@ -41,40 +41,40 @@ public class Terremoto {
      * 
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
-    void parseTweet(String tweet) {
+    private void parseTweet(String tweet) {
         try {
             // parsing magnitudo locale
             if (tweet.contains(" ML ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
                 TipoMagnitudo tipo = TipoMagnitudo.ML;
-                setMagnitudo(valore, tipo);
+                this.magnitudo = new Magnitudo(valore, tipo);
             }
 
             // parsing magnitudo momento
             if (tweet.contains(" Mw ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
                 TipoMagnitudo tipo = TipoMagnitudo.Mw;
-                setMagnitudo(valore, tipo);
+                this.magnitudo = new Magnitudo(valore, tipo);
             }
 
             // parsing ora
-            setOra(StringUtils.substringBetween(tweet, " ore ", " IT "));
+            this.ora = StringUtils.substringBetween(tweet, " ore ", " IT ");
 
             // parsing data e località
             if (tweet.contains(" a ")) {
-                setData(StringUtils.substringBetween(tweet, " del ", " a "));
-                setLocalita(StringUtils.substringBetween(tweet, " a ", " Prof="));
+                this.data = StringUtils.substringBetween(tweet, " del ", " a ");
+                this.localita = StringUtils.substringBetween(tweet, " a ", " Prof=");
             }
             if (tweet.contains(", ")) {
-                setData(StringUtils.substringBetween(tweet, " del ", ", "));
-                setLocalita(StringUtils.substringBetween(tweet, ", ", " Prof="));
+                this.data = StringUtils.substringBetween(tweet, " del ", ", ");
+                this.localita = StringUtils.substringBetween(tweet, ", ", " Prof=");
             }
 
             // parsing profonodità
-            setProfondita(Float.parseFloat(StringUtils.substringBetween(tweet, "Prof=", "Km #INGV")));
+            this.profondita = Float.parseFloat(StringUtils.substringBetween(tweet, "Prof=", "Km #INGV"));
 
             // parsing link
-            setLink(StringUtils.right(tweet, 23));
+            this.link = StringUtils.right(tweet, 23);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,44 +90,20 @@ public class Terremoto {
         return profondita;
     }
 
-    public void setProfondita(float profondita) {
-        this.profondita = profondita;
-    }
-
     public String getLocalita() {
         return localita;
-    }
-
-    public void setLocalita(String localita) {
-        this.localita = localita;
     }
 
     public String getData() {
         return data;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
-
     public String getOra() {
         return ora;
     }
 
-    public void setOra(String ora) {
-        this.ora = ora;
-    }
-
-    public void setMagnitudo(float valore, TipoMagnitudo tipo) {
-        this.magnitudo = new Magnitudo(valore, tipo);
-    }
-
     public String getLink() {
         return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     public String toString() {

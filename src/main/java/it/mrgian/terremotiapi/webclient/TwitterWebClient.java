@@ -30,7 +30,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
      * @see it.mrgian.terremotiapi.webclient.TwitterWebClientConfig
      */
     public TwitterWebClient(TwitterWebClientConfig config) {
-        this.setConfig(config);
+        this.config = config;
 
         webClient = WebClient.builder().baseUrl(config.getBaseUrl())
                 .defaultHeader("Authorization", "Bearer " + config.getToken()).build();
@@ -67,9 +67,5 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
 
     public TwitterWebClientConfig getConfig() {
         return config;
-    }
-
-    public void setConfig(TwitterWebClientConfig config) {
-        this.config = config;
     }
 }

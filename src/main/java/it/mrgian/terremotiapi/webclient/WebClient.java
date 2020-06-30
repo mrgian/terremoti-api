@@ -9,6 +9,4 @@ public interface WebClient {
     public abstract List<Terremoto> getLatestTerremoti();
 
     public abstract TwitterWebClientConfig getConfig();
-
-    public abstract void setConfig(TwitterWebClientConfig config);
 }

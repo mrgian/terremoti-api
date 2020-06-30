@@ -14,8 +14,8 @@ public class WebClientConfig {
     protected JsonNode jsonNode;
 
     public WebClientConfig(String baseUrl, String token) {
-        this.setBaseUrl(baseUrl);
-        this.setToken(token);
+        this.baseUrl = baseUrl;
+        this.token = token;
     }
 
     public WebClientConfig() {
@@ -23,8 +23,8 @@ public class WebClientConfig {
             objectMapper = new ObjectMapper();
             jsonNode = objectMapper.readValue(getDefaultConfigJson(), JsonNode.class);
 
-            this.setBaseUrl(jsonNode.get("baseUrl").textValue());
-            this.setToken(jsonNode.get("token").textValue());
+            this.baseUrl = jsonNode.get("baseUrl").textValue();
+            this.token = jsonNode.get("token").textValue();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,15 +53,7 @@ public class WebClientConfig {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getBaseUrl() {
         return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
     }
 }

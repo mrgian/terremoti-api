@@ -8,14 +8,14 @@ public class TwitterWebClientConfig extends WebClientConfig {
 
     public TwitterWebClientConfig(String baseUrl, String token, String user) {
         super(baseUrl, token);
-        this.setUser(user);
+        this.user = user;
     }
 
     public TwitterWebClientConfig() {
         super();
 
         try {
-            this.setUser(jsonNode.get("user").textValue());
+            this.user = jsonNode.get("user").textValue();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,9 +23,5 @@ public class TwitterWebClientConfig extends WebClientConfig {
 
     public String getUser() {
         return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
     }
 }
