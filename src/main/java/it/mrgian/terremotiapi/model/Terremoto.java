@@ -1,8 +1,9 @@
 package it.mrgian.terremotiapi.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+
 import org.apache.commons.lang.StringUtils;
 
-import io.netty.util.internal.StringUtil;
 import it.mrgian.terremotiapi.model.magnitudo.Magnitudo;
 import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
 
@@ -12,11 +13,22 @@ import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
  * @author Gianmatteo Palmieri
  */
 public class Terremoto {
+    @JsonPropertyDescription("Magnitudo del terremoto")
     private Magnitudo magnitudo;
+
+    @JsonPropertyDescription("Ora del terremoto")
     private String ora;
+
+    @JsonPropertyDescription("Data del terremoto")
     private String data;
+
+    @JsonPropertyDescription("Luogo in cui è avvenuto il terremoto")
     private String localita;
+
+    @JsonPropertyDescription("Profondità alla quale è avvenuto il terremoto")
     private float profondita;
+
+    @JsonPropertyDescription("Link da seguire per maggiori informazioni sul terremoto")
     private String link;
 
     public Terremoto(String tweet) {
