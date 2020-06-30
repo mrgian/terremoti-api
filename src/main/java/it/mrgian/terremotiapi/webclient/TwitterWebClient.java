@@ -45,7 +45,8 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
             response = webClient.get()
                     .uri(uriBuilder -> uriBuilder.queryParam("q", "from:" + config.getUser())
                             .queryParam("tweet_mode", "extended").queryParam("include_entities", "false")
-                            .queryParam("count", 100).queryParam("trim_user", true).build())
+                            .queryParam("count", 100).queryParam("trim_user", true).queryParam("result_type", "recent")
+                            .build())
                     .retrieve();
 
             String responseString = response.bodyToMono(String.class).block();
