@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.mrgian.terremotiapi.model.Terremoto;
@@ -29,8 +30,11 @@ public class TerremotiController {
     }
 
     @RequestMapping(value = "/terremoti", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Object> getTerremoti() {
-        return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
+    public ResponseEntity<Object> getTerremoti(@RequestParam(required = false) String data) {
+        if (data == null)
+            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(twitterWebClient.getDateTerremoti(data), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/terremoti/metadata", method = RequestMethod.GET, produces = "application/json")

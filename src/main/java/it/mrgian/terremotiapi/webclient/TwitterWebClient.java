@@ -1,9 +1,14 @@
 package it.mrgian.terremotiapi.webclient;
 
 import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.utils.DateUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -36,14 +41,54 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
                 .defaultHeader("Authorization", "Bearer " + config.getToken()).build();
     }
 
-    public List<Terremoto> getLatestTerremoti() {
-        List<Terremoto> terremoti = new ArrayList<>();
+    /**
+     * @return ArrayList dei terremoti degli ultimi 7 giorni
+     */
+    public ArrayList<Terremoto> getLatestTerremoti() {
+        return getTerremoti(""); // nessun parametro aggiuntivo
+    }
+
+    /**
+     * Questo metodo ritorna la lista dei terremoti avvenuti in una specifica a
+     * data. A causa delle limitazioni delle API standard di Twitter questo metodo
+     * non restituisce alcun dato se la data è più lontana di 7 giorni dal giorno in
+     * cui viene invocato. (L'API standard di Twitter cerca e restituisce solo i
+     * tweet degli ultimi 7 giorni)
+     * 
+     * @param dateString
+     * @return ArrayList dei terremoti avvenuti in una specifica data
+     */
+    public ArrayList<Terremoto> getDateTerremoti(String dateString) {
+        ArrayList<Terremoto> terremoti = new ArrayList<>();
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(dateString);
+
+            String params = " since:" + dateFormat.format(date) + " until:"
+                    + dateFormat.format(DateUtils.addOneDay(date));
+            terremoti = getTerremoti(params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return terremoti;
+    }
+
+    /**
+     * E' possibile passare parametri aggiuntivi alla query di ricerca
+     * 
+     * @param params
+     * @return ArrayList dei terremoti degli ultimi 7 giorni
+     */
+    public ArrayList<Terremoto> getTerremoti(String params) {
+        ArrayList<Terremoto> terremoti = new ArrayList<>();
 
         try {
             ResponseSpec response;
 
             response = webClient.get()
-                    .uri(uriBuilder -> uriBuilder.queryParam("q", "from:" + config.getUser())
+                    .uri(uriBuilder -> uriBuilder.queryParam("q", "from:" + config.getUser() + params)
                             .queryParam("tweet_mode", "extended").queryParam("include_entities", "false")
                             .queryParam("count", 100).queryParam("trim_user", true).queryParam("result_type", "recent")
                             .build())
