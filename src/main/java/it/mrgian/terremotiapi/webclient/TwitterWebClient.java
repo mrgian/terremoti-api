@@ -50,7 +50,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     }
 
     /**
-     * @return Statistiche sui terremoti degli ultimo sette giorni in formato JSON
+     * @return Statistiche sui terremoti degli ultimi sette giorni in formato JSON
      */
     public String getStatsLatestTerremoti() {
         return TerremotiUtils.getStatsTerremoti(getLatestTerremoti());

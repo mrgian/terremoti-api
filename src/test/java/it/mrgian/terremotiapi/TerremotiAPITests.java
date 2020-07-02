@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -57,11 +55,12 @@ class TerremotiAPITests {
 			String terremotiJson = FileUtils.readFile("/tests/terremotiExample.json", getClass());
 			String statsJson = FileUtils.readFile("/tests/statsExample.json", getClass());
 
-			Terremoto[] terremoti = new ObjectMapper().readValue(terremotiJson, Terremoto[].class);
-			List<Terremoto> terremotiList = Arrays.asList(terremoti);
+			ArrayList<Terremoto> terremoti = new ObjectMapper().readValue(terremotiJson,
+					new TypeReference<ArrayList<Terremoto>>() {
+					});
 
-			JsonNode node = new ObjectMapper().readTree(statsJson);
-			JsonNode expectedNode = new ObjectMapper().readTree(TerremotiUtils.getStatsTerremoti(terremotiList));
+			JsonNode expectedNode = new ObjectMapper().readTree(statsJson);
+			JsonNode node = new ObjectMapper().readTree(TerremotiUtils.getStatsTerremoti(terremoti));
 
 			assertEquals(expectedNode, node);
 		} catch (Exception e) {

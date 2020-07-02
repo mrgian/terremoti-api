@@ -1,6 +1,8 @@
 package it.mrgian.terremotiapi.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import org.apache.commons.lang.StringUtils;
@@ -60,18 +62,21 @@ public class Terremoto {
      * 
      * @param tweet testo del tweet di cui effettuare il parsing
      */
-    @JsonIgnore
     public Terremoto(String tweet) {
         parseTweet(tweet);
     }
 
-    public Terremoto(float valoreMagnitudo, String tipoMagnitudo, String ora, String data, String localita,
-            float profondita, String link) {
+    @JsonCreator
+    public Terremoto(@JsonProperty("valoreMagnitudo") float valoreMagnitudo,
+            @JsonProperty("tipoMagnitudo") String tipoMagnitudo, @JsonProperty("ora") String ora,
+            @JsonProperty("data") String data, @JsonProperty("localita") String localita,
+            @JsonProperty("profondita") float profondita, @JsonProperty("link") String link) {
         this.valoreMagnitudo = valoreMagnitudo;
         this.tipoMagnitudo = tipoMagnitudo;
         this.ora = ora;
         this.data = data;
         this.localita = localita;
+        this.profondita = profondita;
         this.link = link;
     }
 
@@ -81,7 +86,6 @@ public class Terremoto {
      * 
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
-    @JsonIgnore
     private void parseTweet(String tweet) {
         try {
             // parsing magnitudo locale
@@ -153,7 +157,6 @@ public class Terremoto {
         return link;
     }
 
-    @JsonIgnore
     public String toString() {
         String string = "Magnitudo: " + getTipoMagnitudo() + " " + getValoreMagnitudo() + "\n";
         string += "Ora: " + getOra() + "\n";
