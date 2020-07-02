@@ -10,7 +10,7 @@ public class FileUtils {
      * @param name
      * @return il contenuto del file
      */
-    public static String readFile(String path, Class theclass) {
+    public static String readFile(String path, @SuppressWarnings("rawtypes") Class theclass) {
         String content = "";
 
         try {

@@ -1,8 +1,5 @@
 package it.mrgian.terremotiapi.webclient.config;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
