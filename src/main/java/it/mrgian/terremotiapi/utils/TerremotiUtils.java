@@ -7,6 +7,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
 import it.mrgian.terremotiapi.model.Terremoto;
 
@@ -80,6 +82,11 @@ public class TerremotiUtils {
         return json;
     }
 
+    /**
+     * @param response Json restituito dalla chiamata l'API di Twitter contenente le
+     *                 informazioni sui tweet
+     * @return ArrayList dei terremoti ricavati dai tweet
+     */
     public static ArrayList<Terremoto> getTerremotiFromTwitterResponse(String response) {
         ArrayList<Terremoto> terremoti = new ArrayList<>();
 
@@ -97,5 +104,21 @@ public class TerremotiUtils {
         }
 
         return terremoti;
+    }
+
+    public static String getMetadata() {
+        String metadata = "";
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonSchemaGenerator schemaGenerator = new JsonSchemaGenerator(objectMapper);
+            JsonSchema schema = schemaGenerator.generateSchema(Terremoto.class);
+
+            metadata = objectMapper.writeValueAsString(schema);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return metadata;
     }
 }

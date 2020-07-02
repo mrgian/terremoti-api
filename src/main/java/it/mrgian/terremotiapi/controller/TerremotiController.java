@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.utils.TerremotiUtils;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
@@ -66,19 +67,7 @@ public class TerremotiController {
      */
     @RequestMapping(value = "/terremoti/metadata", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getMetadata() {
-        String metadata = "";
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonSchemaGenerator schemaGenerator = new JsonSchemaGenerator(objectMapper);
-            JsonSchema schema = schemaGenerator.generateSchema(Terremoto.class);
-
-            metadata = objectMapper.writeValueAsString(schema);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return new ResponseEntity<Object>(metadata, HttpStatus.OK);
+        return new ResponseEntity<Object>(TerremotiUtils.getMetadata(), HttpStatus.OK);
     }
 
 }
