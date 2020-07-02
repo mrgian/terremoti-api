@@ -1,6 +1,7 @@
 package it.mrgian.terremotiapi.utils;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class FileUtils {
@@ -22,7 +23,7 @@ public class FileUtils {
                 content += line + "\n";
 
             reader.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

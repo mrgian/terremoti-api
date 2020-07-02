@@ -6,6 +6,7 @@ import it.mrgian.terremotiapi.utils.TerremotiUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,7 +72,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
             String params = " since:" + dateFormat.format(date) + " until:"
                     + dateFormat.format(DateUtils.addOneDay(date));
             terremoti = getTerremoti(params);
-        } catch (Exception e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 

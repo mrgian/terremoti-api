@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import org.apache.commons.lang.StringUtils;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
+import it.mrgian.terremotiapi.exception.MissingTweetFieldException;
+
 /**
  * Classe che gestisce le informazioni su un terremoto
  * 
@@ -62,7 +65,11 @@ public class Terremoto {
      * @param tweet testo del tweet di cui effettuare il parsing
      */
     public Terremoto(String tweet) {
-        parseTweet(tweet);
+        try {
+            parseTweet(tweet);
+        } catch (MissingTweetFieldException e) {
+            e.printStackTrace();
+        }
     }
 
     @JsonCreator
@@ -85,7 +92,7 @@ public class Terremoto {
      * 
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
-    private void parseTweet(String tweet) {
+    private void parseTweet(String tweet) throws MissingTweetFieldException {
         try {
             // parsing magnitudo locale
             if (tweet.contains(" ML ")) {
@@ -94,33 +101,40 @@ public class Terremoto {
                 this.valoreMagnitudo = valore;
                 this.tipoMagnitudo = tipo;
             }
-
             // parsing magnitudo momento
-            if (tweet.contains(" Mw ")) {
+            else if (tweet.contains(" Mw ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
                 String tipo = "Mw";
                 this.valoreMagnitudo = valore;
                 this.tipoMagnitudo = tipo;
-            }
+            } else
+                throw new MissingTweetFieldException("Valore magnitudo mancante");
 
             // parsing ora
             this.ora = StringUtils.substringBetween(tweet, " ore ", " IT ");
+            if (this.ora == null)
+                throw new MissingTweetFieldException("Ora mancante");
 
             // parsing data e località
             if (tweet.contains(" a ")) {
                 this.data = StringUtils.substringBetween(tweet, " del ", " a ");
                 this.localita = StringUtils.substringBetween(tweet, " a ", " Prof=");
-            }
-            if (tweet.contains(", ")) {
+            } else if (tweet.contains(", ")) {
                 this.data = StringUtils.substringBetween(tweet, " del ", ", ");
                 this.localita = StringUtils.substringBetween(tweet, ", ", " Prof=");
-            }
+            } else
+                throw new MissingTweetFieldException("Data o località mancante");
 
             // parsing profonodità
+            this.profondita = -1;
             this.profondita = Float.parseFloat(StringUtils.substringBetween(tweet, "Prof=", "Km #INGV"));
+            if (this.profondita == -1)
+                throw new MissingTweetFieldException("Valore profondità mancante");
 
             // parsing link
             this.link = StringUtils.right(tweet, 23);
+            if (!this.link.contains("https"))
+                throw new MissingTweetFieldException("Link mancante");
 
         } catch (Exception e) {
             e.printStackTrace();

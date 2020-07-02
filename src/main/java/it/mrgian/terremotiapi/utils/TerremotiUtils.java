@@ -3,6 +3,8 @@ package it.mrgian.terremotiapi.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -65,7 +67,7 @@ public class TerremotiUtils {
 
         try {
             json = new ObjectMapper().writeValueAsString(map);
-        } catch (Exception e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
@@ -82,7 +84,9 @@ public class TerremotiUtils {
                 if (tweetText.contains("[DATI #RIVISTI]"))
                     terremoti.add(new Terremoto(tweetText));
             });
-        } catch (Exception e) {
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
