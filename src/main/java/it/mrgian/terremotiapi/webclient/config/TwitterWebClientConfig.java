@@ -4,7 +4,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * Classe di configurazione del webclient per effetture richieste all'API di
- * twitter
+ * twitter.
+ * 
+ * @author Gianmatteo Palmieri
  */
 @Component
 public class TwitterWebClientConfig extends WebClientConfig {

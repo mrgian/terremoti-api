@@ -7,6 +7,8 @@ import it.mrgian.terremotiapi.utils.FileUtils;
 
 /**
  * Classe di configurazione per un webclient generico
+ * 
+ * @author Gianmatteo Palmieri
  */
 public class WebClientConfig {
     private String baseUrl;

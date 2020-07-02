@@ -5,6 +5,8 @@ import java.util.Date;
 
 /**
  * Classe che contiene metodi statici utili per operazioni sulle date
+ * 
+ * @author Gianmatteo Palmieri
  */
 public class DateUtils {
 

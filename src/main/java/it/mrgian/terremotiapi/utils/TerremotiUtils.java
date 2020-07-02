@@ -10,6 +10,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.mrgian.terremotiapi.model.Terremoto;
 
+/**
+ * Classe che contiene metodi statici che effettuano operazioni utili rigurdanti
+ * i terremoti
+ * 
+ * @author Gianmatteo Palmieri
+ */
 public class TerremotiUtils {
 
     /**

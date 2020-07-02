@@ -19,6 +19,8 @@ import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
 /**
  * Controller che gestisce le richieste alla API.
+ * 
+ * @author Gianmatteo Palmier
  */
 @RestController
 public class TerremotiController {

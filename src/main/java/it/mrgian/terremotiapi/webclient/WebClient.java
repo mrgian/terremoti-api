@@ -7,6 +7,8 @@ import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
 /**
  * Interfaccia che contiene i metodi astratti del web client
+ * 
+ * @author Gianmatteo Palmieri
  */
 public interface WebClient {
     public abstract List<Terremoto> getLatestTerremoti();

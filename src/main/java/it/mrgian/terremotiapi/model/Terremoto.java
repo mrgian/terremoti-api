@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import org.apache.commons.lang.StringUtils;
 
-import ch.qos.logback.core.joran.conditional.ElseAction;
 import it.mrgian.terremotiapi.exception.MissingTweetFieldException;
 
 /**

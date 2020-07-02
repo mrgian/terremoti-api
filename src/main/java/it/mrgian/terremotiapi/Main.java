@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Classe principale che contiene il metodo main
+ * 
+ * @author Gianmatteo Palmieri
  */
 @SpringBootApplication
 public class Main {

@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Classe che contiente il metodo statico per la lettura dei file
+ * 
+ * @author Gianmatteo Palmieri
+ */
 public class FileUtils {
     /**
      * Legge il contenuto di un file di testo presente nella cartella "resources"
