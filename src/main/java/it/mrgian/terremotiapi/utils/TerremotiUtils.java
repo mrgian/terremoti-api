@@ -2,6 +2,7 @@ package it.mrgian.terremotiapi.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,7 @@ public class TerremotiUtils {
      * @param terremoti ArrayList dei terremoti su cui effettuare le statistiche
      * @return JSON contentente le statistiche
      */
-    public static String getStatsTerremoti(ArrayList<Terremoto> terremoti) {
+    public static String getStatsTerremoti(List<Terremoto> terremoti) {
         float mediaMagnitudo = 0;
         float mediaProfondita = 0;
         float mediaGiorno = 0;

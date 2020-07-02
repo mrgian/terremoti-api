@@ -1,5 +1,6 @@
 package it.mrgian.terremotiapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import org.apache.commons.lang.StringUtils;
@@ -42,7 +43,7 @@ public class Terremoto {
     private String localita;
 
     /**
-     * Profondità a cui è avvenuto il terremoto
+     * Profondità espressa in km a cui è avvenuto il terremoto
      */
     @JsonPropertyDescription("Profondità in km alla quale è avvenuto il terremoto")
     private float profondita;
@@ -59,8 +60,19 @@ public class Terremoto {
      * 
      * @param tweet testo del tweet di cui effettuare il parsing
      */
+    @JsonIgnore
     public Terremoto(String tweet) {
         parseTweet(tweet);
+    }
+
+    public Terremoto(float valoreMagnitudo, String tipoMagnitudo, String ora, String data, String localita,
+            float profondita, String link) {
+        this.valoreMagnitudo = valoreMagnitudo;
+        this.tipoMagnitudo = tipoMagnitudo;
+        this.ora = ora;
+        this.data = data;
+        this.localita = localita;
+        this.link = link;
     }
 
     /**
@@ -69,6 +81,7 @@ public class Terremoto {
      * 
      * @param tweet Testo del tweet contenente le informazioni sul terremoto
      */
+    @JsonIgnore
     private void parseTweet(String tweet) {
         try {
             // parsing magnitudo locale
@@ -140,6 +153,7 @@ public class Terremoto {
         return link;
     }
 
+    @JsonIgnore
     public String toString() {
         String string = "Magnitudo: " + getTipoMagnitudo() + " " + getValoreMagnitudo() + "\n";
         string += "Ora: " + getOra() + "\n";
