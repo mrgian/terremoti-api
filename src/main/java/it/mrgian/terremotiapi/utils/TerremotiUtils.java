@@ -106,6 +106,9 @@ public class TerremotiUtils {
         return terremoti;
     }
 
+    /**
+     * @return Json che rappresenta i metadati dell'oggetto Terremoto
+     */
     public static String getMetadata() {
         String metadata = "";
 
