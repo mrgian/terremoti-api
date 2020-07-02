@@ -2,6 +2,7 @@ package it.mrgian.terremotiapi.webclient;
 
 import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.utils.DateUtils;
+import it.mrgian.terremotiapi.utils.TerremotiUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
@@ -44,6 +45,13 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
      */
     public ArrayList<Terremoto> getLatestTerremoti() {
         return getTerremoti(""); // nessun parametro aggiuntivo
+    }
+
+    /**
+     * @return Statistiche sui terremoti degli ultimo sette giorni in formato JSON
+     */
+    public String getStatsLatestTerremoti() {
+        return TerremotiUtils.getStatsTerremoti(getLatestTerremoti());
     }
 
     /**

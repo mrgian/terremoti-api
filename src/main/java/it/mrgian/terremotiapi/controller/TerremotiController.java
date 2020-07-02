@@ -37,16 +37,24 @@ public class TerremotiController {
 
     /**
      * Gestisce le richieste GET alla rotta "/terremoti". Restituisce in formato
-     * JSON le informazioni sui terremoti degli ultimi 7 giorni. E' possibile
-     * specificare il parametro "data" quando si effuttua la chiamata per ricevere
-     * solo le informazioni sui terremoti di una specifica data
+     * JSON le informazioni sui terremoti degli ultimi 7 giorni.
      * 
-     * @param data Data dei terremoti in formato "yyyy-MM-dd"
      * @return Informazioni sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getTerremoti() {
         return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
+    }
+
+    /**
+     * Gestisce le richieste GET alla rotta "/terremoti/stats". Restituisce in
+     * formato JSON le statistiche sui terremoti degli ultimi 7 giorni.
+     * 
+     * @return Statistiche sui terremoti in formato JSON
+     */
+    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Object> getStatsTerremoti() {
+        return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(), HttpStatus.OK);
     }
 
     /**
