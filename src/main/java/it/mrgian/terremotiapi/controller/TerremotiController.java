@@ -18,17 +18,32 @@ import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
+/**
+ * Controller che gestisce le richieste alla API.
+ */
 @RestController
 public class TerremotiController {
     @Autowired
     TwitterWebClient twitterWebClient;
 
+    /**
+     * Inizializza il web client usato per ricevere i dati.
+     */
     @PostConstruct
     public void init() {
         TwitterWebClientConfig config = new TwitterWebClientConfig();
         twitterWebClient = new TwitterWebClient(config);
     }
 
+    /**
+     * Gestisce le richieste GET alla rotta "/terremoti". Restituisce in formato
+     * JSON le informazioni sui terremoti degli ultimi 7 giorni. E' possibile
+     * specificare il parametro "data" quando si effuttua la chiamata per ricevere
+     * solo le informazioni sui terremoti di una specifica data
+     * 
+     * @param data Data dei terremoti in formato "yyyy-MM-dd"
+     * @return Informazioni sui terremoti in formato JSON
+     */
     @RequestMapping(value = "/terremoti", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getTerremoti(@RequestParam(required = false) String data) {
         if (data == null)
@@ -37,6 +52,12 @@ public class TerremotiController {
             return new ResponseEntity<>(twitterWebClient.getDateTerremoti(data), HttpStatus.OK);
     }
 
+    /**
+     * Gestisce le richieste GET alla rotta "/terremoti/metadata"
+     * 
+     * @return metadata dell'oggetto {@link it.mrgian.terremotiapi.model.Terremoto}
+     *         in formato JSON
+     */
     @RequestMapping(value = "/terremoti/metadata", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getMetadata() {
         String metadata = "";

@@ -5,11 +5,9 @@ import it.mrgian.terremotiapi.utils.DateUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

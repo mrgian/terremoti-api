@@ -13,24 +13,49 @@ import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
  * @author Gianmatteo Palmieri
  */
 public class Terremoto {
+
+    /**
+     * Magnitudo del terremoto
+     */
     @JsonPropertyDescription("Magnitudo del terremoto")
     private Magnitudo magnitudo;
 
+    /**
+     * Ora a cui è avvenuto il terremoto in formato "hh:mm"
+     */
     @JsonPropertyDescription("Ora del terremoto")
     private String ora;
 
+    /**
+     * Data in cui è avvenuto il terremoto in formato "dd-MM-yyyy"
+     */
     @JsonPropertyDescription("Data del terremoto")
     private String data;
 
+    /**
+     * Luogo in cui è avvenuto il terremoto
+     */
     @JsonPropertyDescription("Luogo in cui è avvenuto il terremoto")
     private String localita;
 
+    /**
+     * Profondità a cui è avvenuto il terremoto
+     */
     @JsonPropertyDescription("Profondità in km alla quale è avvenuto il terremoto")
     private float profondita;
 
+    /**
+     * Link da seguire per avere maggiori informazioni sul terremoto
+     */
     @JsonPropertyDescription("Link da seguire per maggiori informazioni sul terremoto")
     private String link;
 
+    /**
+     * Costruttore che effettua il parsing del testo del tweet per ricavarne
+     * informazioni sul terremoto
+     * 
+     * @param tweet testo del tweet di cui effettuare il parsing
+     */
     public Terremoto(String tweet) {
         parseTweet(tweet);
     }

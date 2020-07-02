@@ -5,6 +5,9 @@ import java.util.List;
 import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
+/**
+ * Interfaccia che contiene i metodi astratti del web client
+ */
 public interface WebClient {
     public abstract List<Terremoto> getLatestTerremoti();
 

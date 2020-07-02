@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Classe di configurazione per un webclient generico
+ */
 public class WebClientConfig {
     private String baseUrl;
     private String token;
@@ -13,11 +16,22 @@ public class WebClientConfig {
     private ObjectMapper objectMapper;
     protected JsonNode jsonNode;
 
+    /**
+     * Inizializza la configurazione con i parametri passati
+     * 
+     * @param baseUrl Url di base (Es.:
+     *                https://api.twitter.com/1.1/search/tweets.json)
+     * @param token   Token di accesso usato per l'autenticazione
+     */
     public WebClientConfig(String baseUrl, String token) {
         this.baseUrl = baseUrl;
         this.token = token;
     }
 
+    /**
+     * Inizializza la configurazione con i parametri di default presenti nel file
+     * defaultConfig.json
+     */
     public WebClientConfig() {
         try {
             objectMapper = new ObjectMapper();
@@ -30,6 +44,9 @@ public class WebClientConfig {
         }
     }
 
+    /**
+     * @return il contenuto del file di configurazione di default
+     */
     private String getDefaultConfigJson() {
         String config = "";
 
