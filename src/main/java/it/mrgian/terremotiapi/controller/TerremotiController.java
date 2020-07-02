@@ -45,11 +45,8 @@ public class TerremotiController {
      * @return Informazioni sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Object> getTerremoti(@RequestParam(required = false) String data) {
-        if (data == null)
-            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(twitterWebClient.getDateTerremoti(data), HttpStatus.OK);
+    public ResponseEntity<Object> getTerremoti() {
+        return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
     }
 
     /**

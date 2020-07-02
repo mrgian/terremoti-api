@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
 import org.apache.commons.lang.StringUtils;
 
-import it.mrgian.terremotiapi.model.magnitudo.Magnitudo;
-import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
-
 /**
  * Classe che gestisce le informazioni su un terremoto
  * 
@@ -15,10 +12,16 @@ import it.mrgian.terremotiapi.model.magnitudo.TipoMagnitudo;
 public class Terremoto {
 
     /**
-     * Magnitudo del terremoto
+     * Valore magnitudo del terremoto
      */
-    @JsonPropertyDescription("Magnitudo del terremoto")
-    private Magnitudo magnitudo;
+    @JsonPropertyDescription("Valore magnitudo del terremoto")
+    private float valoreMagnitudo;
+
+    /**
+     * Tipo magnitudo del terremoto (Locale o momento)
+     */
+    @JsonPropertyDescription("Tipo magnitudo del terremoto")
+    private String tipoMagnitudo;
 
     /**
      * Ora a cui è avvenuto il terremoto in formato "hh:mm"
@@ -71,15 +74,17 @@ public class Terremoto {
             // parsing magnitudo locale
             if (tweet.contains(" ML ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
-                TipoMagnitudo tipo = TipoMagnitudo.ML;
-                this.magnitudo = new Magnitudo(valore, tipo);
+                String tipo = "ML";
+                this.valoreMagnitudo = valore;
+                this.tipoMagnitudo = tipo;
             }
 
             // parsing magnitudo momento
             if (tweet.contains(" Mw ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
-                TipoMagnitudo tipo = TipoMagnitudo.Mw;
-                this.magnitudo = new Magnitudo(valore, tipo);
+                String tipo = "Mw";
+                this.valoreMagnitudo = valore;
+                this.tipoMagnitudo = tipo;
             }
 
             // parsing ora
@@ -107,8 +112,12 @@ public class Terremoto {
 
     }
 
-    public Magnitudo getMagnitudo() {
-        return magnitudo;
+    public float getValoreMagnitudo() {
+        return valoreMagnitudo;
+    }
+
+    public String getTipoMagnitudo() {
+        return tipoMagnitudo;
     }
 
     public float getProfondita() {
@@ -132,7 +141,7 @@ public class Terremoto {
     }
 
     public String toString() {
-        String string = "Magnitudo: " + getMagnitudo().getTipo() + " " + getMagnitudo().getValore() + "\n";
+        String string = "Magnitudo: " + getTipoMagnitudo() + " " + getValoreMagnitudo() + "\n";
         string += "Ora: " + getOra() + "\n";
         string += "Data: " + getData() + "\n";
         string += "Località: " + getLocalita() + "\n";
