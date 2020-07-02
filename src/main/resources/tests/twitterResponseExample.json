@@ -1,0 +1,681 @@
+{
+    "statuses": [
+        {
+            "created_at": "Tue Jun 30 19:40:17 +0000 2020",
+            "id": 1278050746173448192,
+            "id_str": "1278050746173448192",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.8 ore 21:24 IT del 30-06-2020 a 2 km NW Lama Mocogno (MO) Prof=18Km #INGV_24745491 https://t.co/Ni1DGcG62E",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                138
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    44.3223,
+                    10.712
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    10.712,
+                    44.3223
+                ]
+            },
+            "place": {
+                "id": "f24694a1ec6765e5",
+                "url": "https://api.twitter.com/1.1/geo/id/f24694a1ec6765e5.json",
+                "place_type": "city",
+                "name": "Lama Mocogno",
+                "full_name": "Lama Mocogno, Emilia Romagna",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                10.635545,
+                                44.2441367
+                            ],
+                            [
+                                10.7821848,
+                                44.2441367
+                            ],
+                            [
+                                10.7821848,
+                                44.366415
+                            ],
+                            [
+                                10.635545,
+                                44.366415
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 11,
+            "favorite_count": 22,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Mon Jun 29 20:33:57 +0000 2020",
+            "id": 1277701863585058816,
+            "id_str": "1277701863585058816",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.7 ore 22:18 IT del 29-06-2020 a 1 km E Neirone (GE) Prof=9Km #INGV_24738661 https://t.co/bdiU4pSx7T",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                131
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    44.4517,
+                    9.2073
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    9.2073,
+                    44.4517
+                ]
+            },
+            "place": {
+                "id": "3d488bd761f529b0",
+                "url": "https://api.twitter.com/1.1/geo/id/3d488bd761f529b0.json",
+                "place_type": "city",
+                "name": "Neirone",
+                "full_name": "Neirone, Liguria",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                9.1526617,
+                                44.4324626
+                            ],
+                            [
+                                9.233447,
+                                44.4324626
+                            ],
+                            [
+                                9.233447,
+                                44.4990669
+                            ],
+                            [
+                                9.1526617,
+                                44.4990669
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 16,
+            "favorite_count": 21,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Mon Jun 29 16:30:54 +0000 2020",
+            "id": 1277640696644673537,
+            "id_str": "1277640696644673537",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.5 ore 18:21 IT del 29-06-2020 a 3 km SE Montecilfone (CB) Prof=18Km #INGV_24737351 https://t.co/a3p2993MNT",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                138
+            ],
+            "metadata": {
+                "iso_language_code": "ro",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": 1277639200079253505,
+            "in_reply_to_status_id_str": "1277639200079253505",
+            "in_reply_to_user_id": 121049123,
+            "in_reply_to_user_id_str": "121049123",
+            "in_reply_to_screen_name": "INGVterremoti",
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    41.8903,
+                    14.8682
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    14.8682,
+                    41.8903
+                ]
+            },
+            "place": {
+                "id": "274f045283292d00",
+                "url": "https://api.twitter.com/1.1/geo/id/274f045283292d00.json",
+                "place_type": "city",
+                "name": "Montecilfone",
+                "full_name": "Montecilfone, Molise",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                14.8024081,
+                                41.865533
+                            ],
+                            [
+                                14.8825541,
+                                41.865533
+                            ],
+                            [
+                                14.8825541,
+                                41.9382007
+                            ],
+                            [
+                                14.8024081,
+                                41.9382007
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 27,
+            "favorite_count": 21,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "ro"
+        },
+        {
+            "created_at": "Mon Jun 29 16:24:57 +0000 2020",
+            "id": 1277639200079253505,
+            "id_str": "1277639200079253505",
+            "full_text": "[STIMA #PROVVISORIA] #terremoto Mag tra 3.2 e 3.7 ore 18:21 IT del 29-06-2020, prov/zona Campobasso #INGV_24737351 https://t.co/QSEAqeg269",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                138
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 20,
+            "favorite_count": 39,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Mon Jun 29 10:16:57 +0000 2020",
+            "id": 1277546590622961665,
+            "id_str": "1277546590622961665",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.4 ore 12:01 IT del 29-06-2020, Costa Calabra nord occidentale (Cosenza) Prof=293Km #INGV_24734251 https://t.co/Xu7qM5Wrle",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                153
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    39.2178,
+                    15.7208
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.7208,
+                    39.2178
+                ]
+            },
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 20,
+            "favorite_count": 30,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Sun Jun 28 23:25:55 +0000 2020",
+            "id": 1277382754297094145,
+            "id_str": "1277382754297094145",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.5 ore 01:18 IT del 29-06-2020 a 6 km W Grassano (MT) Prof=26Km #INGV_24731241 https://t.co/HMjGA0T55P",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                133
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    40.6548,
+                    16.2197
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    16.2197,
+                    40.6548
+                ]
+            },
+            "place": {
+                "id": "a0467bedca06a190",
+                "url": "https://api.twitter.com/1.1/geo/id/a0467bedca06a190.json",
+                "place_type": "city",
+                "name": "Tricarico",
+                "full_name": "Tricarico, Basilicata",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                15.9413878,
+                                40.5822634
+                            ],
+                            [
+                                16.3186379,
+                                40.5822634
+                            ],
+                            [
+                                16.3186379,
+                                40.725503
+                            ],
+                            [
+                                15.9413878,
+                                40.725503
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 6,
+            "favorite_count": 20,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Sat Jun 27 16:59:59 +0000 2020",
+            "id": 1276923241966288902,
+            "id_str": "1276923241966288902",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.9 ore 18:35 IT del 27-06-2020 a 10 km N Centuripe (EN) Prof=17Km #INGV_24723201 https://t.co/Tw4i8yoJmA",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                135
+            ],
+            "metadata": {
+                "iso_language_code": "ro",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    37.707,
+                    14.738
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    14.738,
+                    37.707
+                ]
+            },
+            "place": {
+                "id": "4fd3c604d8e99e35",
+                "url": "https://api.twitter.com/1.1/geo/id/4fd3c604d8e99e35.json",
+                "place_type": "city",
+                "name": "Randazzo",
+                "full_name": "Randazzo, Sicilia",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                14.7055123,
+                                37.6803411
+                            ],
+                            [
+                                15.0238257,
+                                37.6803411
+                            ],
+                            [
+                                15.0238257,
+                                37.9608117
+                            ],
+                            [
+                                14.7055123,
+                                37.9608117
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 9,
+            "favorite_count": 18,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "ro"
+        },
+        {
+            "created_at": "Fri Jun 26 16:07:39 +0000 2020",
+            "id": 1276547681649938434,
+            "id_str": "1276547681649938434",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.7 ore 17:50 IT del 26-06-2020, Tirreno Meridionale (MARE) Prof=30Km #INGV_24716401 https://t.co/7CPbZiHdLz",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                138
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    38.8262,
+                    12.6357
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    12.6357,
+                    38.8262
+                ]
+            },
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 5,
+            "favorite_count": 20,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Fri Jun 26 07:15:31 +0000 2020",
+            "id": 1276413768562548741,
+            "id_str": "1276413768562548741",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.6 ore 08:49 IT del 26-06-2020, Costa Siciliana nord orientale (Messina) Prof=126Km #INGV_24712931 https://t.co/Rq6zayj4OD",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                153
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    38.216,
+                    14.8423
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    14.8423,
+                    38.216
+                ]
+            },
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 6,
+            "favorite_count": 22,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Thu Jun 25 21:31:50 +0000 2020",
+            "id": 1276266879997358080,
+            "id_str": "1276266879997358080",
+            "full_text": "[DATI #RIVISTI] #terremoto Mw 6.3 ore 23:05 IT del 25-06-2020, China [Land] Prof=1Km #INGV_24711291 https://t.co/TnQLVayYdE",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                123
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    35.5008,
+                    82.4678
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    82.4678,
+                    35.5008
+                ]
+            },
+            "place": {
+                "id": "01db56e015a237b1",
+                "url": "https://api.twitter.com/1.1/geo/id/01db56e015a237b1.json",
+                "place_type": "admin",
+                "name": "Xizang",
+                "full_name": "Tibet, People's Republic of China",
+                "country_code": "CN",
+                "country": "People's Republic of China",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                77.9308457,
+                                27.2744713
+                            ],
+                            [
+                                99.1036987,
+                                27.2744713
+                            ],
+                            [
+                                99.1036987,
+                                36.5319366
+                            ],
+                            [
+                                77.9308457,
+                                36.5319366
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 15,
+            "favorite_count": 36,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        }
+    ],
+    "search_metadata": {
+        "completed_in": 0.031,
+        "max_id": 1278050746173448192,
+        "max_id_str": "1278050746173448192",
+        "next_results": "?max_id=1276266879997358079&q=from%3Aingvterremoti&count=100",
+        "query": "from%3Aingvterremoti",
+        "refresh_url": "?since_id=1278050746173448192&q=from%3Aingvterremoti",
+        "count": 100,
+        "since_id": 0,
+        "since_id_str": "0"
+    }
+}

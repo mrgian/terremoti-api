@@ -1,0 +1,83 @@
+[
+    {
+        "valoreMagnitudo": 2.8,
+        "tipoMagnitudo": "ML",
+        "ora": "21:24",
+        "data": "30-06-2020",
+        "localita": "2 km NW Lama Mocogno (MO)",
+        "profondita": 18.0,
+        "link": "https://t.co/Ni1DGcG62E"
+    },
+    {
+        "valoreMagnitudo": 2.7,
+        "tipoMagnitudo": "ML",
+        "ora": "22:18",
+        "data": "29-06-2020",
+        "localita": "1 km E Neirone (GE)",
+        "profondita": 9.0,
+        "link": "https://t.co/bdiU4pSx7T"
+    },
+    {
+        "valoreMagnitudo": 3.5,
+        "tipoMagnitudo": "ML",
+        "ora": "18:21",
+        "data": "29-06-2020",
+        "localita": "3 km SE Montecilfone (CB)",
+        "profondita": 18.0,
+        "link": "https://t.co/a3p2993MNT"
+    },
+    {
+        "valoreMagnitudo": 3.4,
+        "tipoMagnitudo": "ML",
+        "ora": "12:01",
+        "data": "29-06-2020",
+        "localita": "Costa Calabra nord occidentale (Cosenza)",
+        "profondita": 293.0,
+        "link": "https://t.co/Xu7qM5Wrle"
+    },
+    {
+        "valoreMagnitudo": 2.5,
+        "tipoMagnitudo": "ML",
+        "ora": "01:18",
+        "data": "29-06-2020",
+        "localita": "6 km W Grassano (MT)",
+        "profondita": 26.0,
+        "link": "https://t.co/HMjGA0T55P"
+    },
+    {
+        "valoreMagnitudo": 2.9,
+        "tipoMagnitudo": "ML",
+        "ora": "18:35",
+        "data": "27-06-2020",
+        "localita": "10 km N Centuripe (EN)",
+        "profondita": 17.0,
+        "link": "https://t.co/Tw4i8yoJmA"
+    },
+    {
+        "valoreMagnitudo": 2.7,
+        "tipoMagnitudo": "ML",
+        "ora": "17:50",
+        "data": "26-06-2020",
+        "localita": "Tirreno Meridionale (MARE)",
+        "profondita": 30.0,
+        "link": "https://t.co/7CPbZiHdLz"
+    },
+    {
+        "valoreMagnitudo": 2.6,
+        "tipoMagnitudo": "ML",
+        "ora": "08:49",
+        "data": "26-06-2020",
+        "localita": "Costa Siciliana nord orientale (Messina)",
+        "profondita": 126.0,
+        "link": "https://t.co/Rq6zayj4OD"
+    },
+    {
+        "valoreMagnitudo": 6.3,
+        "tipoMagnitudo": "Mw",
+        "ora": "23:05",
+        "data": "25-06-2020",
+        "localita": "China [Land]",
+        "profondita": 1.0,
+        "link": "https://t.co/TnQLVayYdE"
+    }
+]

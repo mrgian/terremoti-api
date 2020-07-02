@@ -3,6 +3,7 @@ package it.mrgian.terremotiapi.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.mrgian.terremotiapi.model.Terremoto;
@@ -69,5 +70,22 @@ public class TerremotiUtils {
         }
 
         return json;
+    }
+
+    public static ArrayList<Terremoto> getTerremotiFromTwitterResponse(String response) {
+        ArrayList<Terremoto> terremoti = new ArrayList<>();
+
+        try {
+            JsonNode tweets = new ObjectMapper().readTree(response);
+            tweets.get("statuses").forEach(tweet -> {
+                String tweetText = tweet.get("full_text").asText();
+                if (tweetText.contains("[DATI #RIVISTI]"))
+                    terremoti.add(new Terremoto(tweetText));
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return terremoti;
     }
 }

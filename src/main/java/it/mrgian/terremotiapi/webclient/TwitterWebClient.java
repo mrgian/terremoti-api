@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -102,13 +104,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
 
             String responseString = response.bodyToMono(String.class).block();
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode tweets = objectMapper.readTree(responseString);
-            tweets.get("statuses").forEach(tweet -> {
-                String tweetText = tweet.get("full_text").asText();
-                if (tweetText.contains("[DATI #RIVISTI]"))
-                    terremoti.add(new Terremoto(tweetText));
-            });
+            terremoti = TerremotiUtils.getTerremotiFromTwitterResponse(responseString);
         } catch (Exception e) {
             e.printStackTrace();
         }
