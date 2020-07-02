@@ -16,22 +16,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.utils.FileUtils;
 import it.mrgian.terremotiapi.utils.TerremotiUtils;
 
 class TerremotiAPITests {
 
-	@BeforeEach
-	void setUp() {
-
-	}
-
+	/**
+	 * Effettua il test del parsing dei tweet. Effettua il parsing di una lista di
+	 * tweet di esempio presente nel file twitterResponseExample.json e lo confronta
+	 * con una lista di terremoti già parsati presente nel file
+	 * terremotiExample.json
+	 */
 	@Test
 	void testParsing() {
 		try {
-			String twitterResponse = readTestExample("twitterResponseExample");
+			String twitterResponse = FileUtils.readFile("/tests/twitterResponseExample.json", getClass());
 			ArrayList<Terremoto> terremoti = TerremotiUtils.getTerremotiFromTwitterResponse(twitterResponse);
 			String terremotiJson = new ObjectMapper().writeValueAsString(terremoti);
-			String terremotiJsonExpected = readTestExample("terremotiExample");
+			String terremotiJsonExpected = FileUtils.readFile("/tests/terremotiExample.json", getClass());
 
 			JsonNode node = new ObjectMapper().readTree(terremotiJson);
 			JsonNode expectedNode = new ObjectMapper().readTree(terremotiJsonExpected);
@@ -42,24 +44,28 @@ class TerremotiAPITests {
 		}
 	}
 
-	private String readTestExample(String name) {
-		String response = "";
-
+	/**
+	 * Effettua il test delle statistiche. Calcola le statistiche di una lista di
+	 * terremoti presente nel file terremotiExample.json e le confronta con le
+	 * statistiche presenti nel file statsExample.json
+	 */
+	@Test
+	void testStats() {
 		try {
-			InputStreamReader stream = new InputStreamReader(
-					getClass().getResourceAsStream("/tests/" + name + ".json"));
-			BufferedReader reader = new BufferedReader(stream);
+			String terremotiJson = FileUtils.readFile("/tests/terremotiExample.json", getClass());
+			String statsJson = FileUtils.readFile("/tests/statsExample.json", getClass());
 
-			String line;
-			while ((line = reader.readLine()) != null)
-				response += line + "\n";
+			ArrayList<Terremoto> terremoti = new ObjectMapper().readValue(terremotiJson,
+					new TypeReference<ArrayList<Terremoto>>() {
+					});
 
-			reader.close();
+			JsonNode node = new ObjectMapper().readTree(statsJson);
+			JsonNode expectedNode = new ObjectMapper().readTree(TerremotiUtils.getStatsTerremoti(terremoti));
+
+			assertEquals(expectedNode.asText(), node.asText());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return response;
 	}
 
 }

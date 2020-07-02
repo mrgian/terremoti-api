@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import it.mrgian.terremotiapi.utils.FileUtils;
+
 /**
  * Classe di configurazione per un webclient generico
  */
@@ -35,35 +37,13 @@ public class WebClientConfig {
     public WebClientConfig() {
         try {
             objectMapper = new ObjectMapper();
-            jsonNode = objectMapper.readValue(getDefaultConfigJson(), JsonNode.class);
+            jsonNode = objectMapper.readValue(FileUtils.readFile("/defaultConfig.json", getClass()), JsonNode.class);
 
             this.baseUrl = jsonNode.get("baseUrl").textValue();
             this.token = jsonNode.get("token").textValue();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * @return il contenuto del file di configurazione di default
-     */
-    private String getDefaultConfigJson() {
-        String config = "";
-
-        try {
-            InputStreamReader stream = new InputStreamReader(getClass().getResourceAsStream("/defaultConfig.json"));
-            BufferedReader reader = new BufferedReader(stream);
-
-            String line;
-            while ((line = reader.readLine()) != null)
-                config += line + "\n";
-
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return config;
     }
 
     public String getToken() {
