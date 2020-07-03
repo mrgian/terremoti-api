@@ -1,7 +1,10 @@
 package it.mrgian.terremotiapi.utils;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -14,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
+import io.github.jamsesso.jsonlogic.JsonLogic;
 import it.mrgian.terremotiapi.model.Terremoto;
 
 /**
@@ -130,23 +134,36 @@ public class TerremotiUtils {
     }
 
     /**
-     * Questo metodo filtra l'ArrayList di terremoti passata. Trasforma il filtro in
-     * formato json con gli operatori logici e condizionali in una espressione
-     * JavaScript da eseguire a runtime per verificare se l'elemento della lista
-     * appartiene alla lista filtrata.
+     * Questo metodo filtra l'ArrayList di terremoti passata secondo le regole
+     * passate nel filtro Itera la lista dei terremoti e per ogni terremoto verifica
+     * se le regole specificate nel filtro sono rispettate.
      * 
      * @param filter
      * @return
      */
-    public ArrayList<Terremoto> filterTerremoti(ArrayList<Terremoto> original, String filter) {
+    public static ArrayList<Terremoto> filterTerremoti(ArrayList<Terremoto> original, String filter) {
         ArrayList<Terremoto> filtered = new ArrayList<>();
 
-        try {
-            ScriptEngineManager factory = new ScriptEngineManager();
-            ScriptEngine engine = factory.getEngineByName("JavaScript");
-            engine.eval("print('Prova script')");
-        } catch (ScriptException e) {
-            e.printStackTrace();
+        JsonLogic jsonLogic = new JsonLogic();
+
+        for (Terremoto terremoto : original) {
+            try {
+                Method[] methods = terremoto.getClass().getMethods();
+                Map<String, Object> data = new HashMap<String, Object>();
+                for (Method m : methods) {
+                    if (m.getName().startsWith("get")) {
+                        Object value = m.invoke(terremoto);
+                        String uppcaseName = m.getName().substring(3);
+                        String name = uppcaseName.substring(0, 1).toLowerCase() + uppcaseName.substring(1);
+                        data.put(name, value);
+                    }
+                }
+
+                if ((boolean) jsonLogic.apply(filter, data))
+                    filtered.add(terremoto);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return filtered;

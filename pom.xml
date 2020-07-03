@@ -71,6 +71,12 @@
 			<version>2.11.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.jamsesso</groupId>
+			<artifactId>json-logic-java</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

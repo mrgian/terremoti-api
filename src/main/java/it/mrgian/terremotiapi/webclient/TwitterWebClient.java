@@ -45,6 +45,10 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
         return getTerremoti(""); // nessun parametro aggiuntivo
     }
 
+    public ArrayList<Terremoto> getLatestFilteredTerremoti(String filter) {
+        return TerremotiUtils.filterTerremoti(getLatestTerremoti(), filter);
+    }
+
     /**
      * @return Statistiche sui terremoti degli ultimi sette giorni in formato JSON
      */
