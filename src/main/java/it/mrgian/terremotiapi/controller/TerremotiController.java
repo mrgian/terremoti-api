@@ -2,10 +2,6 @@ package it.mrgian.terremotiapi.controller;
 
 import javax.annotation.PostConstruct;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
-import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.utils.TerremotiUtils;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
@@ -49,9 +44,21 @@ public class TerremotiController {
         return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
     }
 
+    /**
+     * Gestisce le richieste POST alla rotta /terremoti. Restituisce in formato JSON
+     * le informazioni sui terremoti filtrati in base al filtro passato nel body
+     * della richiesta. Se il body non è presente viene la lista dei terremoti non
+     * filtrata
+     * 
+     * @param filter filtro in formato JSON
+     * @return Lista dei terremoti filtrata
+     */
     @RequestMapping(value = "/terremoti", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getFilteredTerremoti(@RequestBody(required = false) String filter) {
-        return new ResponseEntity<>(twitterWebClient.getLatestFilteredTerremoti(filter), HttpStatus.OK);
+        if (filter != null)
+            return new ResponseEntity<>(twitterWebClient.getLatestFilteredTerremoti(filter), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
     }
 
     /**
