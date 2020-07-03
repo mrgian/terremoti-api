@@ -2,12 +2,14 @@ package it.mrgian.terremotiapi;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.mrgian.terremotiapi.exception.InvalidFieldException;
@@ -21,7 +23,7 @@ class TerremotiAPITests {
 	String terremotiJsonExpected;
 	String statsJsonExpected;
 
-	@Before
+	@BeforeEach
 	void setUp() {
 		twitterResponse = FileUtils.readFile("/tests/twitterResponseExample.json", getClass());
 		terremotiJsonExpected = FileUtils.readFile("/tests/terremotiExample.json", getClass());
@@ -46,6 +48,7 @@ class TerremotiAPITests {
 			assertEquals(expectedNode, node);
 		} catch (Exception e) {
 			e.printStackTrace();
+			fail();
 		}
 	}
 
@@ -66,6 +69,7 @@ class TerremotiAPITests {
 			assertEquals(expectedNode, node);
 		} catch (Exception e) {
 			e.printStackTrace();
+			fail();
 		}
 	}
 
