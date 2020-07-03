@@ -1,14 +1,12 @@
 package it.mrgian.terremotiapi.webclient;
 
-import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.model.Terremoti;
 import it.mrgian.terremotiapi.utils.DateUtils;
-import it.mrgian.terremotiapi.utils.TerremotiUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.stereotype.Service;
@@ -41,19 +39,19 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     /**
      * @return ArrayList dei terremoti degli ultimi 7 giorni
      */
-    public ArrayList<Terremoto> getLatestTerremoti() {
+    public Terremoti getLatestTerremoti() {
         return getTerremoti(""); // nessun parametro aggiuntivo
     }
 
-    public ArrayList<Terremoto> getLatestFilteredTerremoti(String filter) {
-        return TerremotiUtils.filterTerremoti(getLatestTerremoti(), filter);
+    public Terremoti getLatestFilteredTerremoti(String filter) {
+        return getLatestTerremoti().filter(filter);
     }
 
     /**
      * @return Statistiche sui terremoti degli ultimi sette giorni in formato JSON
      */
     public String getStatsLatestTerremoti() {
-        return TerremotiUtils.getStatsTerremoti(getLatestTerremoti());
+        return getLatestTerremoti().getStats();
     }
 
     /**
@@ -66,8 +64,8 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
      * @param dateString
      * @return ArrayList dei terremoti avvenuti in una specifica data
      */
-    public ArrayList<Terremoto> getDateTerremoti(String dateString) {
-        ArrayList<Terremoto> terremoti = new ArrayList<>();
+    public Terremoti getDateTerremoti(String dateString) {
+        Terremoti terremoti = new Terremoti();
 
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -89,8 +87,8 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
      * @param params
      * @return ArrayList dei terremoti degli ultimi 7 giorni
      */
-    public ArrayList<Terremoto> getTerremoti(String params) {
-        ArrayList<Terremoto> terremoti = new ArrayList<>();
+    public Terremoti getTerremoti(String params) {
+        Terremoti terremoti = new Terremoti();
 
         try {
             ResponseSpec response;
@@ -104,7 +102,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
 
             String responseString = response.bodyToMono(String.class).block();
 
-            terremoti = TerremotiUtils.getTerremotiFromTwitterResponse(responseString);
+            terremoti = new Terremoti(responseString);
         } catch (Exception e) {
             e.printStackTrace();
         }

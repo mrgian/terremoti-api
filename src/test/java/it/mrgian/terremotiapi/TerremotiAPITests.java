@@ -2,17 +2,14 @@ package it.mrgian.terremotiapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.Test;
 
-import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.model.Terremoti;
 import it.mrgian.terremotiapi.utils.FileUtils;
-import it.mrgian.terremotiapi.utils.TerremotiUtils;
 
 class TerremotiAPITests {
 
@@ -26,7 +23,7 @@ class TerremotiAPITests {
 	void testParsing() {
 		try {
 			String twitterResponse = FileUtils.readFile("/tests/twitterResponseExample.json", getClass());
-			ArrayList<Terremoto> terremoti = TerremotiUtils.getTerremotiFromTwitterResponse(twitterResponse);
+			Terremoti terremoti = new Terremoti(twitterResponse);
 			String terremotiJson = new ObjectMapper().writeValueAsString(terremoti);
 			String terremotiJsonExpected = FileUtils.readFile("/tests/terremotiExample.json", getClass());
 
@@ -50,12 +47,11 @@ class TerremotiAPITests {
 			String terremotiJson = FileUtils.readFile("/tests/terremotiExample.json", getClass());
 			String statsJson = FileUtils.readFile("/tests/statsExample.json", getClass());
 
-			ArrayList<Terremoto> terremoti = new ObjectMapper().readValue(terremotiJson,
-					new TypeReference<ArrayList<Terremoto>>() {
-					});
+			Terremoti terremoti = new ObjectMapper().readValue(terremotiJson, new TypeReference<Terremoti>() {
+			});
 
 			JsonNode expectedNode = new ObjectMapper().readTree(statsJson);
-			JsonNode node = new ObjectMapper().readTree(TerremotiUtils.getStatsTerremoti(terremoti));
+			JsonNode node = new ObjectMapper().readTree(terremoti.getStats());
 
 			assertEquals(expectedNode, node);
 		} catch (Exception e) {

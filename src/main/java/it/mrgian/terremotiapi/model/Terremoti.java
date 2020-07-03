@@ -1,4 +1,4 @@
-package it.mrgian.terremotiapi.utils;
+package it.mrgian.terremotiapi.model;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -11,23 +11,36 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.jamsesso.jsonlogic.JsonLogic;
-import it.mrgian.terremotiapi.model.Terremoto;
 
 /**
- * Classe che contiene metodi statici che effettuano operazioni utili rigurdanti
- * i terremoti
+ * Classe che gestisce una lista di terremoti
  * 
  * @author Gianmatteo Palmieri
  */
-public class TerremotiUtils {
+public class Terremoti extends ArrayList<Terremoto> {
+
+    private static final long serialVersionUID = 1L;
+
+    public Terremoti() {
+        super();
+    }
 
     /**
-     * Effettua le statistiche sui terremoto
+     * Inizializza la lista aggiungendo i terremoti ricavati dalla risposta all'API
+     * di Twitter
      * 
-     * @param terremoti ArrayList dei terremoti su cui effettuare le statistiche
+     * @param twitterResponse Risposta all'API di Twitter
+     */
+    public Terremoti(String twitterResponse) {
+        addTerremotiFromTwitterResponse(twitterResponse);
+    }
+
+    /**
+     * Effettua e restituisce le statistiche sui terremoti
+     * 
      * @return JSON contentente le statistiche
      */
-    public static String getStatsTerremoti(ArrayList<Terremoto> terremoti) {
+    public String getStats() {
         float mediaMagnitudo = 0;
         float mediaProfondita = 0;
         float mediaGiorno = 0;
@@ -36,7 +49,7 @@ public class TerremotiUtils {
         String lastDay = "";
 
         int counter = 0;
-        for (Terremoto terremoto : terremoti) {
+        for (Terremoto terremoto : this) {
             mediaMagnitudo += terremoto.getValoreMagnitudo();
             mediaProfondita += terremoto.getProfondita();
 
@@ -66,7 +79,7 @@ public class TerremotiUtils {
     /**
      * @return JSON con i parametri passati
      */
-    private static String statsToJson(float mediaMagnitudo, float mediaProfondita, float mediaGiorno) {
+    private String statsToJson(float mediaMagnitudo, float mediaProfondita, float mediaGiorno) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("mediaMagnitudo", mediaMagnitudo);
         map.put("mediaProfondita", mediaProfondita);
@@ -86,41 +99,34 @@ public class TerremotiUtils {
     /**
      * @param response Json restituito dalla chiamata l'API di Twitter contenente le
      *                 informazioni sui tweet
-     * @return ArrayList dei terremoti ricavati dai tweet
      */
-    public static ArrayList<Terremoto> getTerremotiFromTwitterResponse(String response) {
-        ArrayList<Terremoto> terremoti = new ArrayList<>();
-
+    private void addTerremotiFromTwitterResponse(String response) {
         try {
             JsonNode tweets = new ObjectMapper().readTree(response);
             tweets.get("statuses").forEach(tweet -> {
                 String tweetText = tweet.get("full_text").asText();
                 if (tweetText.contains("[DATI #RIVISTI]"))
-                    terremoti.add(new Terremoto(tweetText));
+                    this.add(new Terremoto(tweetText));
             });
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
-        return terremoti;
     }
 
     /**
-     * Questo metodo filtra l'ArrayList di terremoti passata secondo le regole
-     * passate nel filtro Itera la lista dei terremoti e per ogni terremoto verifica
-     * se le regole specificate nel filtro sono rispettate.
+     * Questo metodo filtra la lista di terremoti secondo le regole passate nel
+     * filtro. Itera la lista dei terremoti e per ogni terremoto verifica se le
+     * regole specificate nel filtro sono rispettate.
      * 
-     * @param filter
-     * @return
+     * @param filter filtro in formato JSON
      */
-    public static ArrayList<Terremoto> filterTerremoti(ArrayList<Terremoto> original, String filter) {
-        ArrayList<Terremoto> filtered = new ArrayList<>();
-
+    public Terremoti filter(String filter) {
         JsonLogic jsonLogic = new JsonLogic();
+        Terremoti filtered = new Terremoti();
 
-        for (Terremoto terremoto : original) {
+        for (Terremoto terremoto : this) {
             try {
                 Method[] methods = terremoto.getClass().getMethods();
                 Map<String, Object> data = new HashMap<String, Object>();
@@ -141,5 +147,6 @@ public class TerremotiUtils {
         }
 
         return filtered;
+
     }
 }
