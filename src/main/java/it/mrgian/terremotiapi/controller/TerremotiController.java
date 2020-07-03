@@ -106,7 +106,7 @@ public class TerremotiController {
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getStatsFilteredTerremoti(@RequestParam(required = false) String field,
-            @RequestParam(required = false) String filter) {
+            @RequestBody(required = false) String filter) {
         if (field != null && filter == null) { // campo assente ma filtro presente
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
@@ -124,7 +124,7 @@ public class TerremotiController {
             }
         }
 
-        if (field != null && filter != null) { // campo e filtro presenti
+        if (field != null && filter != "") { // campo e filtro presenti
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter).getStats(field),
                         HttpStatus.OK);
