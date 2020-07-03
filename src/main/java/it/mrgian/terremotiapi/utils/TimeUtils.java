@@ -8,7 +8,21 @@ import java.util.Date;
  * 
  * @author Gianmatteo Palmieri
  */
-public class DateUtils {
+public class TimeUtils {
+
+    /**
+     * Trasforma una data in un int di formato "yyyyMMdd"
+     * 
+     * @param time Object che rappresenta la data
+     * @return data/ora in int formato "yyyyMMdd"
+     */
+    public static int dataToInt(Object data) {
+        String startString = (String) data;
+        String finalString = startString.split("-")[2];
+        finalString += startString.split("-")[1] + startString.split("-")[0];
+
+        return Integer.parseInt(finalString);
+    }
 
     /**
      * Metodo che incrementa una data di un giorno

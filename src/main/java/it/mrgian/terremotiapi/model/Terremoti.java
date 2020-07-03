@@ -14,6 +14,7 @@ import io.github.jamsesso.jsonlogic.JsonLogic;
 import it.mrgian.terremotiapi.exception.InvalidFieldException;
 import it.mrgian.terremotiapi.exception.InvalidFilterException;
 import it.mrgian.terremotiapi.utils.JsonUtils;
+import it.mrgian.terremotiapi.utils.TimeUtils;
 
 /**
  * Classe che gestisce una lista di terremoti
@@ -158,7 +159,11 @@ public class Terremoti extends ArrayList<Terremoto> {
                         Object value = m.invoke(terremoto);
                         String uppcaseName = m.getName().substring(3);
                         String name = uppcaseName.substring(0, 1).toLowerCase() + uppcaseName.substring(1);
-                        data.put(name, value);
+
+                        if (name.equals("data"))
+                            data.put(name, TimeUtils.dataToInt(value));
+                        else
+                            data.put(name, value);
                     }
                 }
 

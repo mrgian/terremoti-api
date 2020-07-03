@@ -87,8 +87,7 @@ class TerremotiAPITests {
 	void testFilterException() {
 		Terremoti terremoti = new Terremoti();
 		assertThrows(InvalidFilterException.class,
-				() -> terremoti.filter("{\"<\": [{\"var\": \"valoreMagnitudo\"}3]}")); // json non valido (virgola
-																						// mancante)
+				() -> terremoti.filter("{\"<\": [{\"var\": \"valoreMagnitudo\"}3]}")); // json non valido
 	}
 
 }

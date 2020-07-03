@@ -135,18 +135,33 @@ il seguente esempio filtra i terremoti che hanno un valore di magnitudo minore d
 }
 ```
 
+il seguente esempio filtra i terremoti che sono avvenuti dal 2 luglio 2020:
+
+```
+{
+    "<=": [
+        {
+            "var": "data"
+        },
+        20200702
+    ]
+}
+```
+
 ### Lista degli operatori
 
 Operatori condizionali:
-- `>` maggiore di
-- `<` minore di
-- `>=` maggiore o uguale di
-- `<=` minore o uguale di
+- `>` maggiore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
+- `<` minore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
+- `>=` maggiore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
+- `<=` minore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
 - `==` uguale a
 
 Operatori logici:
 - `and`
 - `or`
+
+
 
 ## Diagramma dei casi d'uso
 
