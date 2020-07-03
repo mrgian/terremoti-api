@@ -1,5 +1,50 @@
 [
     {
+        "valoreMagnitudo": 3.0,
+        "tipoMagnitudo": "ML",
+        "ora": "18:19",
+        "data": "03-07-2020",
+        "localita": "2 km SW Rocca San Felice (AV)",
+        "profondita": 13.0,
+        "link": "https://t.co/0C0TNn2TPB"
+    },
+    {
+        "valoreMagnitudo": 2.9,
+        "tipoMagnitudo": "ML",
+        "ora": "18:14",
+        "data": "03-07-2020",
+        "localita": "1 km W Sant'Angelo dei Lombardi (AV)",
+        "profondita": 13.0,
+        "link": "https://t.co/a2Bf1VR9dN"
+    },
+    {
+        "valoreMagnitudo": 3.2,
+        "tipoMagnitudo": "ML",
+        "ora": "07:39",
+        "data": "03-07-2020",
+        "localita": "3 km N Condofuri (RC)",
+        "profondita": 68.0,
+        "link": "https://t.co/T3qoDnTVHB"
+    },
+    {
+        "valoreMagnitudo": 3.2,
+        "tipoMagnitudo": "ML",
+        "ora": "07:38",
+        "data": "03-07-2020",
+        "localita": "6 km E Cardeto (RC)",
+        "profondita": 67.0,
+        "link": "https://t.co/qFWfJyPv06"
+    },
+    {
+        "valoreMagnitudo": 3.7,
+        "tipoMagnitudo": "ML",
+        "ora": "17:28",
+        "data": "02-07-2020",
+        "localita": "Costa Siracusana (Siracusa)",
+        "profondita": 14.0,
+        "link": "https://t.co/jN8Tgw5zir"
+    },
+    {
         "valoreMagnitudo": 2.8,
         "tipoMagnitudo": "ML",
         "ora": "21:24",

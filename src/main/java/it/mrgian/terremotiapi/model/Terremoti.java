@@ -146,8 +146,11 @@ public class Terremoti extends ArrayList<Terremoto> {
         JsonLogic jsonLogic = new JsonLogic();
         Terremoti filtered = new Terremoti();
 
-        for (Terremoto terremoto : this) {
-            try {
+        if (!JsonUtils.isValidJSON(filter))
+            throw new InvalidFilterException("filtro non valido");
+
+        try {
+            for (Terremoto terremoto : this) {
                 Method[] methods = terremoto.getClass().getMethods();
                 Map<String, Object> data = new HashMap<String, Object>();
                 for (Method m : methods) {
@@ -161,9 +164,9 @@ public class Terremoti extends ArrayList<Terremoto> {
 
                 if ((boolean) jsonLogic.apply(filter, data))
                     filtered.add(terremoto);
-            } catch (Exception e) {
-                throw new InvalidFilterException("filtro non valido");
             }
+        } catch (Exception e) {
+            throw new InvalidFilterException("filtro non valido");
         }
 
         return filtered;

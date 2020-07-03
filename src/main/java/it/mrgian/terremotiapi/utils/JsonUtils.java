@@ -20,4 +20,14 @@ public class JsonUtils {
 
         return json;
     }
+
+    public static boolean isValidJSON(String json) {
+        try {
+            new ObjectMapper().readTree(json);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }

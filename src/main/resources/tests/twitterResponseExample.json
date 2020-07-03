@@ -1,6 +1,486 @@
 {
     "statuses": [
         {
+            "created_at": "Fri Jul 03 16:38:01 +0000 2020",
+            "id": 1279092039938908162,
+            "id_str": "1279092039938908162",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.0 ore 18:19 IT del 03-07-2020 a 2 km SW Rocca San Felice (AV) Prof=13Km #INGV_24764871 https://t.co/0C0TNn2TPB",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                142
+            ],
+            "metadata": {
+                "iso_language_code": "ro",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    40.9367,
+                    15.153
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.153,
+                    40.9367
+                ]
+            },
+            "place": {
+                "id": "7008e63de676c7a6",
+                "url": "https://api.twitter.com/1.1/geo/id/7008e63de676c7a6.json",
+                "place_type": "city",
+                "name": "Sant'Angelo dei Lombardi",
+                "full_name": "Sant'Angelo dei Lombardi, Campania",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                15.1125738,
+                                40.8897094
+                            ],
+                            [
+                                15.2384297,
+                                40.8897094
+                            ],
+                            [
+                                15.2384297,
+                                40.9738856
+                            ],
+                            [
+                                15.1125738,
+                                40.9738856
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 10,
+            "favorite_count": 8,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "ro"
+        },
+        {
+            "created_at": "Fri Jul 03 16:27:31 +0000 2020",
+            "id": 1279089398106259456,
+            "id_str": "1279089398106259456",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 2.9 ore 18:14 IT del 03-07-2020 a 1 km W Sant'Angelo dei Lombardi (AV) Prof=13Km #INGV_24764641 https://t.co/a2Bf1VR9dN",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                149
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": 1279087012516106245,
+            "in_reply_to_status_id_str": "1279087012516106245",
+            "in_reply_to_user_id": 121049123,
+            "in_reply_to_user_id_str": "121049123",
+            "in_reply_to_screen_name": "INGVterremoti",
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    40.9302,
+                    15.1677
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.1677,
+                    40.9302
+                ]
+            },
+            "place": {
+                "id": "7008e63de676c7a6",
+                "url": "https://api.twitter.com/1.1/geo/id/7008e63de676c7a6.json",
+                "place_type": "city",
+                "name": "Sant'Angelo dei Lombardi",
+                "full_name": "Sant'Angelo dei Lombardi, Campania",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                15.1125738,
+                                40.8897094
+                            ],
+                            [
+                                15.2384297,
+                                40.8897094
+                            ],
+                            [
+                                15.2384297,
+                                40.9738856
+                            ],
+                            [
+                                15.1125738,
+                                40.9738856
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 6,
+            "favorite_count": 13,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Fri Jul 03 16:18:02 +0000 2020",
+            "id": 1279087012516106245,
+            "id_str": "1279087012516106245",
+            "full_text": "[STIMA #PROVVISORIA] #terremoto Mag tra 2.8 e 3.3 ore 18:14 IT del 03-07-2020, prov/zona Salerno #INGV_24764641 https://t.co/QSEAqeg269",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                135
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 5,
+            "favorite_count": 12,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Fri Jul 03 05:48:32 +0000 2020",
+            "id": 1278928593549131779,
+            "id_str": "1278928593549131779",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.2 ore 07:39 IT del 03-07-2020 a 3 km N Condofuri (RC) Prof=68Km #INGV_24759071 https://t.co/T3qoDnTVHB",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                134
+            ],
+            "metadata": {
+                "iso_language_code": "ro",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": 1278926963630096386,
+            "in_reply_to_status_id_str": "1278926963630096386",
+            "in_reply_to_user_id": 121049123,
+            "in_reply_to_user_id_str": "121049123",
+            "in_reply_to_screen_name": "INGVterremoti",
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    38.0278,
+                    15.8595
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.8595,
+                    38.0278
+                ]
+            },
+            "place": {
+                "id": "e09a3fb7ed89b8bb",
+                "url": "https://api.twitter.com/1.1/geo/id/e09a3fb7ed89b8bb.json",
+                "place_type": "city",
+                "name": "Condofuri",
+                "full_name": "Condofuri, Calabria",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                15.838823,
+                                37.919089
+                            ],
+                            [
+                                15.9214123,
+                                37.919089
+                            ],
+                            [
+                                15.9214123,
+                                38.0380128
+                            ],
+                            [
+                                15.838823,
+                                38.0380128
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 14,
+            "favorite_count": 20,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "ro"
+        },
+        {
+            "created_at": "Fri Jul 03 05:46:49 +0000 2020",
+            "id": 1278928160319590400,
+            "id_str": "1278928160319590400",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.2 ore 07:38 IT del 03-07-2020 a 6 km E Cardeto (RC) Prof=67Km #INGV_24759041 https://t.co/qFWfJyPv06",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                132
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": 1278926689096085504,
+            "in_reply_to_status_id_str": "1278926689096085504",
+            "in_reply_to_user_id": 121049123,
+            "in_reply_to_user_id_str": "121049123",
+            "in_reply_to_screen_name": "INGVterremoti",
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    38.1082,
+                    15.8273
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.8273,
+                    38.1082
+                ]
+            },
+            "place": {
+                "id": "9d1bb8359b936bb2",
+                "url": "https://api.twitter.com/1.1/geo/id/9d1bb8359b936bb2.json",
+                "place_type": "city",
+                "name": "Reggio Calabria",
+                "full_name": "Reggio Calabria, Calabria",
+                "country_code": "IT",
+                "country": "Italy",
+                "contained_within": [],
+                "bounding_box": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                15.6302803,
+                                37.9909
+                            ],
+                            [
+                                15.8646265,
+                                37.9909
+                            ],
+                            [
+                                15.8646265,
+                                38.2132933
+                            ],
+                            [
+                                15.6302803,
+                                38.2132933
+                            ]
+                        ]
+                    ]
+                },
+                "attributes": {}
+            },
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 13,
+            "favorite_count": 15,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Fri Jul 03 05:42:04 +0000 2020",
+            "id": 1278926963630096386,
+            "id_str": "1278926963630096386",
+            "full_text": "[STIMA #PROVVISORIA] #terremoto Mag tra 3.2 e 3.7 ore 07:39 IT del 03-07-2020, prov/zona Reggio di Calabria #INGV_24759071 https://t.co/QSEAqeg269",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                146
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 10,
+            "favorite_count": 21,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Fri Jul 03 05:40:58 +0000 2020",
+            "id": 1278926689096085504,
+            "id_str": "1278926689096085504",
+            "full_text": "[STIMA #PROVVISORIA] #terremoto Mag tra 3.0 e 3.5 ore 07:38 IT del 03-07-2020, prov/zona Reggio di Calabria #INGV_24759041 https://t.co/QSEAqeg269",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                146
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 8,
+            "favorite_count": 17,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
+            "created_at": "Thu Jul 02 15:41:25 +0000 2020",
+            "id": 1278715408648933376,
+            "id_str": "1278715408648933376",
+            "full_text": "[DATI #RIVISTI] #terremoto ML 3.7 ore 17:28 IT del 02-07-2020, Costa Siracusana (Siracusa) Prof=14Km #INGV_24756041 https://t.co/jN8Tgw5zir",
+            "truncated": false,
+            "display_text_range": [
+                0,
+                139
+            ],
+            "metadata": {
+                "iso_language_code": "it",
+                "result_type": "recent"
+            },
+            "source": "<a href=\"http://cnt.rm.ingv.it\" rel=\"nofollow\">INGVreport</a>",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 121049123,
+                "id_str": "121049123"
+            },
+            "geo": {
+                "type": "Point",
+                "coordinates": [
+                    37.0617,
+                    15.7357
+                ]
+            },
+            "coordinates": {
+                "type": "Point",
+                "coordinates": [
+                    15.7357,
+                    37.0617
+                ]
+            },
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 35,
+            "favorite_count": 39,
+            "favorited": false,
+            "retweeted": false,
+            "possibly_sensitive": false,
+            "lang": "it"
+        },
+        {
             "created_at": "Tue Jun 30 19:40:17 +0000 2020",
             "id": 1278050746173448192,
             "id_str": "1278050746173448192",
@@ -74,8 +554,8 @@
             },
             "contributors": null,
             "is_quote_status": false,
-            "retweet_count": 11,
-            "favorite_count": 22,
+            "retweet_count": 12,
+            "favorite_count": 23,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -156,7 +636,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 16,
-            "favorite_count": 21,
+            "favorite_count": 22,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -237,7 +717,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 27,
-            "favorite_count": 21,
+            "favorite_count": 22,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -273,7 +753,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 20,
-            "favorite_count": 39,
+            "favorite_count": 41,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -321,7 +801,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 20,
-            "favorite_count": 30,
+            "favorite_count": 31,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -402,7 +882,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 6,
-            "favorite_count": 20,
+            "favorite_count": 21,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -483,7 +963,7 @@
             "contributors": null,
             "is_quote_status": false,
             "retweet_count": 9,
-            "favorite_count": 18,
+            "favorite_count": 19,
             "favorited": false,
             "retweeted": false,
             "possibly_sensitive": false,
@@ -668,12 +1148,12 @@
         }
     ],
     "search_metadata": {
-        "completed_in": 0.031,
-        "max_id": 1278050746173448192,
-        "max_id_str": "1278050746173448192",
+        "completed_in": 0.045,
+        "max_id": 1279092039938908162,
+        "max_id_str": "1279092039938908162",
         "next_results": "?max_id=1276266879997358079&q=from%3Aingvterremoti&count=100",
         "query": "from%3Aingvterremoti",
-        "refresh_url": "?since_id=1278050746173448192&q=from%3Aingvterremoti",
+        "refresh_url": "?since_id=1279092039938908162&q=from%3Aingvterremoti",
         "count": 100,
         "since_id": 0,
         "since_id_str": "0"
