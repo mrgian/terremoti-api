@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.jamsesso.jsonlogic.JsonLogic;
 import it.mrgian.terremotiapi.exception.InvalidFieldException;
+import it.mrgian.terremotiapi.exception.InvalidFilterException;
 import it.mrgian.terremotiapi.utils.JsonUtils;
 
 /**
@@ -141,7 +142,7 @@ public class Terremoti extends ArrayList<Terremoto> {
      * 
      * @param filter filtro in formato JSON
      */
-    public Terremoti filter(String filter) throws Exception {
+    public Terremoti filter(String filter) throws InvalidFilterException {
         JsonLogic jsonLogic = new JsonLogic();
         Terremoti filtered = new Terremoti();
 
@@ -161,7 +162,7 @@ public class Terremoti extends ArrayList<Terremoto> {
                 if ((boolean) jsonLogic.apply(filter, data))
                     filtered.add(terremoto);
             } catch (Exception e) {
-                throw new Exception("filtro non valido");
+                throw new InvalidFilterException("filtro non valido");
             }
         }
 

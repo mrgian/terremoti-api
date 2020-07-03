@@ -1,17 +1,13 @@
 package it.mrgian.terremotiapi.webclient;
 
-import it.mrgian.terremotiapi.exception.InvalidFieldException;
 import it.mrgian.terremotiapi.model.Terremoti;
 import it.mrgian.terremotiapi.utils.DateUtils;
-import it.mrgian.terremotiapi.utils.ErrorUtils;
-import it.mrgian.terremotiapi.utils.JsonUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -41,39 +37,10 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     }
 
     /**
-     * @return ArrayList dei terremoti degli ultimi 7 giorni
+     * @return Lista dei terremoti degli ultimi 7 giorni
      */
     public Terremoti getLatestTerremoti() {
         return getTerremoti(""); // nessun parametro aggiuntivo
-    }
-
-    public Terremoti getLatestFilteredTerremoti(String filter) throws Exception {
-        try {
-            return getLatestTerremoti().filter(filter);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    /**
-     * @return Statistiche sui terremoti degli ultimi sette giorni in formato JSON
-     */
-    public String getStatsLatestTerremoti() {
-        return getLatestTerremoti().getStats();
-    }
-
-    /**
-     * @return Statistiche sui terremoti degli ultimi sette giorni di uno specifico
-     *         campo in formato JSON
-     */
-    public String getStatsLatestTerremoti(String field) throws InvalidFieldException {
-        try {
-            return getLatestTerremoti().getStats(field);
-        } catch (InvalidFieldException e) {
-            e.printStackTrace();
-            throw new InvalidFieldException(e.getMessage());
-        }
     }
 
     /**

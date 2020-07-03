@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.mrgian.terremotiapi.exception.InvalidFieldException;
+import it.mrgian.terremotiapi.exception.InvalidFilterException;
 import it.mrgian.terremotiapi.model.Terremoto;
-import it.mrgian.terremotiapi.utils.ErrorUtils;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
@@ -60,9 +60,9 @@ public class TerremotiController {
     public ResponseEntity<Object> getFilteredTerremoti(@RequestBody(required = false) String filter) {
         if (filter != null) {
             try {
-                return new ResponseEntity<>(twitterWebClient.getLatestFilteredTerremoti(filter), HttpStatus.OK);
-            } catch (Exception e) {
-                return new ResponseEntity<>(ErrorUtils.errorJson(e), HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter), HttpStatus.OK);
+            } catch (InvalidFilterException e) {
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
             }
         } else
             return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
@@ -77,12 +77,12 @@ public class TerremotiController {
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
         if (field == null)
-            return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(), HttpStatus.OK);
+            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
         else {
             try {
-                return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(field), HttpStatus.OK);
+                return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
             } catch (InvalidFieldException e) {
-                return new ResponseEntity<>(ErrorUtils.errorJson(e), HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
             }
         }
     }
