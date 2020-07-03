@@ -3,6 +3,10 @@ package it.mrgian.terremotiapi.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -123,5 +127,28 @@ public class TerremotiUtils {
         }
 
         return metadata;
+    }
+
+    /**
+     * Questo metodo filtra l'ArrayList di terremoti passata. Trasforma il filtro in
+     * formato json con gli operatori logici e condizionali in una espressione
+     * JavaScript da eseguire a runtime per verificare se l'elemento della lista
+     * appartiene alla lista filtrata.
+     * 
+     * @param filter
+     * @return
+     */
+    public ArrayList<Terremoto> filterTerremoti(ArrayList<Terremoto> original, String filter) {
+        ArrayList<Terremoto> filtered = new ArrayList<>();
+
+        try {
+            ScriptEngineManager factory = new ScriptEngineManager();
+            ScriptEngine engine = factory.getEngineByName("JavaScript");
+            engine.eval("print('Prova script')");
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
+
+        return filtered;
     }
 }
