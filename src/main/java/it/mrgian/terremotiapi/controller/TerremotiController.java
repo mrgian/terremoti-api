@@ -20,7 +20,7 @@ import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 /**
  * Controller che gestisce le richieste alla API.
  * 
- * @author Gianmatteo Palmier
+ * @author Gianmatteo Palmieri
  */
 @RestController
 public class TerremotiController {
@@ -38,7 +38,7 @@ public class TerremotiController {
 
     /**
      * Gestisce le richieste GET alla rotta "/terremoti". Restituisce in formato
-     * JSON le informazioni sui terremoti degli ultimi 7 giorni.
+     * JSON le informazioni sui terremoti.
      * 
      * @return Informazioni sui terremoti in formato JSON
      */
@@ -49,13 +49,13 @@ public class TerremotiController {
 
     /**
      * Gestisce le richieste GET alla rotta "/terremoti/stats". Restituisce in
-     * formato JSON le statistiche sui terremoti degli ultimi 7 giorni.
+     * formato JSON le statistiche sui terremoti.
      * 
      * @return Statistiche sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
-        if (field == null)
+        if (field == null) // campo assente
             return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
         else {
             try {
@@ -67,10 +67,20 @@ public class TerremotiController {
     }
 
     /**
+     * Gestisce le richieste GET alla rotta "/terremoti/metadata"
+     * 
+     * @return metadata dell'oggetto Terremoto in formato JSON
+     */
+    @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
+    public ResponseEntity<Object> getMetadata() {
+        return new ResponseEntity<Object>(Terremoto.getMetadata(), HttpStatus.OK);
+    }
+
+    /**
      * Gestisce le richieste POST alla rotta /terremoti. Restituisce in formato JSON
      * le informazioni sui terremoti filtrati in base al filtro passato nel body
      * della richiesta. Se il body non è presente viene la lista dei terremoti non
-     * filtrata
+     * filtrata.
      * 
      * @param filter filtro in formato JSON
      * @return Lista dei terremoti filtrata
@@ -88,15 +98,16 @@ public class TerremotiController {
     }
 
     /**
-     * Gestisce le richieste GET alla rotta "/terremoti/stats". Restituisce in
-     * formato JSON le statistiche sui terremoti degli ultimi 7 giorni.
+     * Gestisce le richieste POST alla rotta "/terremoti/stats". Restituisce in
+     * formato JSON le statistiche del campo sui terremoti filtrati in base al
+     * filtro passato nel body della richiesta.
      * 
      * @return Statistiche sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getStatsFilteredTerremoti(@RequestParam(required = false) String field,
             @RequestParam(required = false) String filter) {
-        if (field != null && filter == null) {
+        if (field != null && filter == null) { // campo assente ma filtro presente
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
             } catch (InvalidFieldException e) {
@@ -104,7 +115,7 @@ public class TerremotiController {
             }
         }
 
-        if (field == null && filter != null) {
+        if (field == null && filter != null) { // campo presente ma filtro assente
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter).getStats(),
                         HttpStatus.OK);
@@ -113,7 +124,7 @@ public class TerremotiController {
             }
         }
 
-        if (field != null && filter != null) {
+        if (field != null && filter != null) { // campo e filtro presenti
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter).getStats(field),
                         HttpStatus.OK);
@@ -124,18 +135,9 @@ public class TerremotiController {
             }
         }
 
+        // campo e filtro assenti
         return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
 
-    }
-
-    /**
-     * Gestisce le richieste GET alla rotta "/terremoti/metadata"
-     * 
-     * @return metadata dell'oggetto Terremoto in formato JSON
-     */
-    @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
-    public ResponseEntity<Object> getMetadata() {
-        return new ResponseEntity<Object>(Terremoto.getMetadata(), HttpStatus.OK);
     }
 
 }
