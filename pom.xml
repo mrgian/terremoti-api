@@ -9,9 +9,9 @@
 	</parent>
 	<groupId>it.mrgian</groupId>
 	<artifactId>terremoti-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<version>1.0</version>
+	<name>Terremoti API</name>
+	<description>Open Source REST API per informazioni sui terremoti</description>
 
 	<properties>
 		<java.version>1.8</java.version>
