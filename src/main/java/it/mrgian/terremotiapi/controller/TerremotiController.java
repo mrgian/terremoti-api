@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.mrgian.terremotiapi.utils.TerremotiUtils;
+import it.mrgian.terremotiapi.model.Terremoto;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
@@ -78,9 +78,9 @@ public class TerremotiController {
      * @return metadata dell'oggetto {@link it.mrgian.terremotiapi.model.Terremoto}
      *         in formato JSON
      */
-    @RequestMapping(value = "/terremoti/metadata", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
     public ResponseEntity<Object> getMetadata() {
-        return new ResponseEntity<Object>(TerremotiUtils.getMetadata(), HttpStatus.OK);
+        return new ResponseEntity<Object>(Terremoto.getMetadata(), HttpStatus.OK);
     }
 
 }

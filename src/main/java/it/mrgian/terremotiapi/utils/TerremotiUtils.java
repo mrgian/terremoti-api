@@ -1,21 +1,14 @@
 package it.mrgian.terremotiapi.utils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
-import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
 import io.github.jamsesso.jsonlogic.JsonLogic;
 import it.mrgian.terremotiapi.model.Terremoto;
@@ -112,25 +105,6 @@ public class TerremotiUtils {
         }
 
         return terremoti;
-    }
-
-    /**
-     * @return Json che rappresenta i metadati dell'oggetto Terremoto
-     */
-    public static String getMetadata() {
-        String metadata = "";
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonSchemaGenerator schemaGenerator = new JsonSchemaGenerator(objectMapper);
-            JsonSchema schema = schemaGenerator.generateSchema(Terremoto.class);
-
-            metadata = objectMapper.writeValueAsString(schema);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return metadata;
     }
 
     /**

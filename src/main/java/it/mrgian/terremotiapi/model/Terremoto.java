@@ -3,6 +3,9 @@ package it.mrgian.terremotiapi.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -141,6 +144,35 @@ public class Terremoto {
 
     }
 
+    /**
+     * @return Json che rappresenta i metadati dell'oggetto Terremoto
+     */
+    public static String getMetadata() {
+        String metadata = "";
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonSchemaGenerator schemaGenerator = new JsonSchemaGenerator(objectMapper);
+            JsonSchema schema = schemaGenerator.generateSchema(Terremoto.class);
+
+            metadata = objectMapper.writeValueAsString(schema);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return metadata;
+    }
+
+    public String toString() {
+        String string = "Magnitudo: " + getTipoMagnitudo() + " " + getValoreMagnitudo() + "\n";
+        string += "Ora: " + getOra() + "\n";
+        string += "Data: " + getData() + "\n";
+        string += "Località: " + getLocalita() + "\n";
+        string += "Profondità: " + getProfondita() + "\n";
+
+        return string;
+    }
+
     public float getValoreMagnitudo() {
         return valoreMagnitudo;
     }
@@ -167,16 +199,6 @@ public class Terremoto {
 
     public String getLink() {
         return link;
-    }
-
-    public String toString() {
-        String string = "Magnitudo: " + getTipoMagnitudo() + " " + getValoreMagnitudo() + "\n";
-        string += "Ora: " + getOra() + "\n";
-        string += "Data: " + getData() + "\n";
-        string += "Località: " + getLocalita() + "\n";
-        string += "Profondità: " + getProfondita() + "\n";
-
-        return string;
     }
 
 }
