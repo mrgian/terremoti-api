@@ -147,3 +147,11 @@ Operatori condizionali:
 Operatori logici:
 - `and`
 - `or`
+
+## Diagramma dei casi d'uso
+
+<img src="https://github.com/mrgian/progetto-oop/raw/master/images/uml/use_case_diagram.png" width="50%">
+
+## Diagramma delle classi
+
+<img src="https://github.com/mrgian/progetto-oop/raw/master/images/uml/class_diagram.png">
