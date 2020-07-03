@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.mrgian.terremotiapi.model.Terremoto;
@@ -68,15 +69,17 @@ public class TerremotiController {
      * @return Statistiche sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Object> getStatsTerremoti() {
-        return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(), HttpStatus.OK);
+    public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
+        if (field == null)
+            return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(field), HttpStatus.OK);
     }
 
     /**
      * Gestisce le richieste GET alla rotta "/terremoti/metadata"
      * 
-     * @return metadata dell'oggetto {@link it.mrgian.terremotiapi.model.Terremoto}
-     *         in formato JSON
+     * @return metadata dell'oggetto Terremoto in formato JSON
      */
     @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
     public ResponseEntity<Object> getMetadata() {

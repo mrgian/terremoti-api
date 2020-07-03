@@ -1,13 +1,16 @@
 package it.mrgian.terremotiapi.webclient;
 
+import it.mrgian.terremotiapi.exception.InvalidFieldException;
 import it.mrgian.terremotiapi.model.Terremoti;
 import it.mrgian.terremotiapi.utils.DateUtils;
+import it.mrgian.terremotiapi.utils.JsonUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -52,6 +55,21 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
      */
     public String getStatsLatestTerremoti() {
         return getLatestTerremoti().getStats();
+    }
+
+    /**
+     * @return Statistiche sui terremoti degli ultimi sette giorni di uno specifico
+     *         campo in formato JSON
+     */
+    public String getStatsLatestTerremoti(String field) {
+        try {
+            return getLatestTerremoti().getStats(field);
+        } catch (InvalidFieldException e) {
+            e.printStackTrace();
+            HashMap<String, Object> error = new HashMap<String, Object>();
+            error.put("errore", "parametro non valido");
+            return JsonUtils.mapToJson(error);
+        }
     }
 
     /**

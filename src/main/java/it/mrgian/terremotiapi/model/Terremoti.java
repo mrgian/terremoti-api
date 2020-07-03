@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.jamsesso.jsonlogic.JsonLogic;
+import it.mrgian.terremotiapi.exception.InvalidFieldException;
+import it.mrgian.terremotiapi.utils.JsonUtils;
 
 /**
  * Classe che gestisce una lista di terremoti
@@ -36,23 +38,17 @@ public class Terremoti extends ArrayList<Terremoto> {
     }
 
     /**
-     * Effettua e restituisce le statistiche sui terremoti
+     * Restituisce la media dei terremoti al giorno
      * 
      * @return JSON contentente le statistiche
      */
     public String getStats() {
-        float mediaMagnitudo = 0;
-        float mediaProfondita = 0;
         float mediaGiorno = 0;
 
         ArrayList<Integer> countGiorni = new ArrayList<>();
         String lastDay = "";
 
-        int counter = 0;
         for (Terremoto terremoto : this) {
-            mediaMagnitudo += terremoto.getValoreMagnitudo();
-            mediaProfondita += terremoto.getProfondita();
-
             if (!terremoto.getData().equals(lastDay))
                 countGiorni.add(1);
             else
@@ -60,12 +56,7 @@ public class Terremoti extends ArrayList<Terremoto> {
                         countGiorni.set(countGiorni.size() - 1, countGiorni.get(countGiorni.size() - 1)) + 1);
 
             lastDay = terremoto.getData();
-
-            counter++;
         }
-
-        mediaMagnitudo /= counter;
-        mediaProfondita /= counter;
 
         for (Integer integer : countGiorni) {
             mediaGiorno += integer;
@@ -73,27 +64,55 @@ public class Terremoti extends ArrayList<Terremoto> {
 
         mediaGiorno /= countGiorni.size();
 
-        return statsToJson(mediaMagnitudo, mediaProfondita, mediaGiorno);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("mediaGiorno", mediaGiorno);
+
+        return JsonUtils.mapToJson(map);
     }
 
     /**
-     * @return JSON con i parametri passati
+     * Restituisce le statistiche di uno specifico campo sui terremoti
+     * 
+     * @return JSON contentente le statistiche
      */
-    private String statsToJson(float mediaMagnitudo, float mediaProfondita, float mediaGiorno) {
+    public String getStats(String field) throws InvalidFieldException {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("mediaMagnitudo", mediaMagnitudo);
-        map.put("mediaProfondita", mediaProfondita);
-        map.put("mediaGiorno", mediaGiorno);
+        if (!field.equals("valoreMagnitudo") && !field.equals("profondita"))
+            throw new InvalidFieldException();
 
-        String json = "";
+        float min = -1;
+        float max = -1;
+        float avg = 0;
+
+        int counter = 0;
 
         try {
-            json = new ObjectMapper().writeValueAsString(map);
-        } catch (JsonProcessingException e) {
+            for (Terremoto terremoto : this) {
+                Method m = terremoto.getClass()
+                        .getMethod("get" + field.substring(0, 1).toUpperCase() + field.substring(1));
+                float value = (float) m.invoke(terremoto);
+
+                if (min == -1 || value < min)
+                    min = value;
+
+                if (max == -1 || value > max)
+                    max = value;
+
+                avg += value;
+
+                counter++;
+            }
+
+            avg /= counter;
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return json;
+        map.put("min", min);
+        map.put("max", max);
+        map.put("avg", avg);
+
+        return JsonUtils.mapToJson(map);
     }
 
     /**
