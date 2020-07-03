@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.mrgian.terremotiapi.exception.InvalidFieldException;
 import it.mrgian.terremotiapi.model.Terremoto;
+import it.mrgian.terremotiapi.utils.ErrorUtils;
 import it.mrgian.terremotiapi.webclient.TwitterWebClient;
 import it.mrgian.terremotiapi.webclient.config.TwitterWebClientConfig;
 
@@ -56,9 +58,13 @@ public class TerremotiController {
      */
     @RequestMapping(value = "/terremoti", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getFilteredTerremoti(@RequestBody(required = false) String filter) {
-        if (filter != null)
-            return new ResponseEntity<>(twitterWebClient.getLatestFilteredTerremoti(filter), HttpStatus.OK);
-        else
+        if (filter != null) {
+            try {
+                return new ResponseEntity<>(twitterWebClient.getLatestFilteredTerremoti(filter), HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(ErrorUtils.errorJson(e), HttpStatus.BAD_REQUEST);
+            }
+        } else
             return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
     }
 
@@ -72,8 +78,13 @@ public class TerremotiController {
     public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
         if (field == null)
             return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(field), HttpStatus.OK);
+        else {
+            try {
+                return new ResponseEntity<>(twitterWebClient.getStatsLatestTerremoti(field), HttpStatus.OK);
+            } catch (InvalidFieldException e) {
+                return new ResponseEntity<>(ErrorUtils.errorJson(e), HttpStatus.BAD_REQUEST);
+            }
+        }
     }
 
     /**

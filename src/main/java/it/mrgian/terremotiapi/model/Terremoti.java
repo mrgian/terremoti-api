@@ -78,7 +78,7 @@ public class Terremoti extends ArrayList<Terremoto> {
     public String getStats(String field) throws InvalidFieldException {
         HashMap<String, Object> map = new HashMap<>();
         if (!field.equals("valoreMagnitudo") && !field.equals("profondita"))
-            throw new InvalidFieldException();
+            throw new InvalidFieldException("parametro non valido");
 
         float min = -1;
         float max = -1;
@@ -141,7 +141,7 @@ public class Terremoti extends ArrayList<Terremoto> {
      * 
      * @param filter filtro in formato JSON
      */
-    public Terremoti filter(String filter) {
+    public Terremoti filter(String filter) throws Exception {
         JsonLogic jsonLogic = new JsonLogic();
         Terremoti filtered = new Terremoti();
 
@@ -161,7 +161,7 @@ public class Terremoti extends ArrayList<Terremoto> {
                 if ((boolean) jsonLogic.apply(filter, data))
                     filtered.add(terremoto);
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new Exception("filtro non valido");
             }
         }
 
