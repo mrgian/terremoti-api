@@ -1,4 +1,4 @@
-<p align="center"><img src="https://cdn.icon-icons.com/icons2/2106/PNG/512/earthquake_icon_129734.png" style="width:150px;height:150px;"></p>
+<p align="center"><img src="https://github.com/mrgian/progetto-oop/raw/master/images/icons/icon.png"></p>
 <h1 align="center">Terremoti REST API</h1>
 <h3 align="center">
 Open Source REST API per informazioni sui terremoti
