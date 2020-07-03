@@ -14,12 +14,16 @@ Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url
 
 ## Rotte
 
-|Tipo|Rotta                  |Descrizione|
-|----|-----------------------|-----------|
-|GET |`/terremoti`           |Restituisce le informazioni sui terremoti degli ultimi 7 giorni|
-|GET |`/terremoti/stats`     |Restituisce le statistiche sui terremoti degli ultimi 7 giorni|
-|GET |`/terremoti/metadata`  |Restituisce i metadati|
-|POST|`/terremoti`           |Restituisce le informazioni sui terremoti degli ultimi 7 giorni filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
+|Tipo|Rotta                                |Descrizione                                                    |
+|----|-------------------------------------|---------------------------------------------------------------|
+|GET |`/terremoti`                         |Restituisce le informazioni sui terremoti  |
+|GET |`/terremoti/stats`                   |Restituisce la media di terremoti al giorno|
+|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche sui terremoti del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`|
+|GET |`/terremoti/metadata`                |Restituisce i metadati                                         |
+|POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
+|POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
+|POST|`/terremoti/stats?field=<campo>`     |Restituisce le statistiche sui terremoti del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`|
+
 
 
 ## Formato dei dati
@@ -36,9 +40,10 @@ I dati vengono sempre restituiti in formato JSON con i seguenti campi per le inf
 
 e con i seguenti campi per le statistiche:
 
-- `mediaMagnitudo` media delle magnitudo
-- `mediaGiorno` media dei terremoti in un giorno
-- `mediaProfondita` media delle profondità
+- `avg` valore medio del campo specificato
+- `max` valore massimo del campo specificato
+- `min` valore minimo del campo specificato
+- `mediaGiorno` media dei terremoti avvenuti in un giorno
 
 
 ## Esempi
@@ -66,12 +71,20 @@ e con i seguenti campi per le statistiche:
 	}
 ]
 ```
+
 `GET https://mrgian.it/terremoti/stats` restituisce un JSON di questo tipo:
 ```
 {
-	"mediaMagnitudo": 3.3100002,
 	"mediaGiorno": 1.6666666,
-	"mediaProfondita": 55.2
+}
+```
+
+`GET https://mrgian.it/terremoti/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
+```
+{
+    "min": 2.5,
+    "avg": 3.2916667,
+    "max": 6.3
 }
 ```
 

@@ -48,6 +48,25 @@ public class TerremotiController {
     }
 
     /**
+     * Gestisce le richieste GET alla rotta "/terremoti/stats". Restituisce in
+     * formato JSON le statistiche sui terremoti degli ultimi 7 giorni.
+     * 
+     * @return Statistiche sui terremoti in formato JSON
+     */
+    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
+        if (field == null)
+            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
+        else {
+            try {
+                return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
+            } catch (InvalidFieldException e) {
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
+            }
+        }
+    }
+
+    /**
      * Gestisce le richieste POST alla rotta /terremoti. Restituisce in formato JSON
      * le informazioni sui terremoti filtrati in base al filtro passato nel body
      * della richiesta. Se il body non è presente viene la lista dei terremoti non
@@ -74,17 +93,39 @@ public class TerremotiController {
      * 
      * @return Statistiche sui terremoti in formato JSON
      */
-    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
-        if (field == null)
-            return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
-        else {
+    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<Object> getStatsFilteredTerremoti(@RequestParam(required = false) String field,
+            @RequestParam(required = false) String filter) {
+        if (field != null && filter == null) {
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
             } catch (InvalidFieldException e) {
                 return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
             }
         }
+
+        if (field == null && filter != null) {
+            try {
+                return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter).getStats(),
+                        HttpStatus.OK);
+            } catch (InvalidFilterException e) {
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
+            }
+        }
+
+        if (field != null && filter != null) {
+            try {
+                return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().filter(filter).getStats(field),
+                        HttpStatus.OK);
+            } catch (InvalidFilterException e) {
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
+            } catch (InvalidFieldException e) {
+                return new ResponseEntity<>(e.getJsonMessage(), HttpStatus.BAD_REQUEST);
+            }
+        }
+
+        return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
+
     }
 
     /**
