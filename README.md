@@ -4,8 +4,8 @@
 Open Source REST API per informazioni sui terremoti
 </h3>
 
-Questa REST API permette di ottenere informazioni utili sui terremoti degli ultimi 7 giorni registrati dalla **Rete Sismica Nazionale**.
-I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** (@INGVterremoti).
+Questa REST API permette di ottenere informazioni sui terremoti degli ultimi 7 giorni registrati dalla **Rete Sismica Nazionale**.
+I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** ([@INGVterremoti](https://twitter.com/INGVterremoti)).
 
 
 ## Uso
@@ -18,11 +18,11 @@ Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url
 |----|-------------------------------------|---------------------------------------------------------------|
 |GET |`/terremoti`                         |Restituisce le informazioni sui terremoti  |
 |GET |`/terremoti/stats`                   |Restituisce la media di terremoti al giorno|
-|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche sui terremoti del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`|
+|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`|
 |GET |`/terremoti/metadata`                |Restituisce i metadati                                         |
 |POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
 |POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
-|POST|`/terremoti/stats?field=<campo>`     |Restituisce le statistiche sui terremoti del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`|
+|POST|`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
 
 
 
@@ -151,16 +151,32 @@ il seguente esempio filtra i terremoti che sono avvenuti dal 2 luglio 2020:
 ### Lista degli operatori
 
 Operatori condizionali:
-- `>` maggiore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
-- `<` minore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
-- `>=` maggiore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
-- `<=` minore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyMMdd**)
+- `>` maggiore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `<` minore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `>=` maggiore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `<=` minore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
 - `==` uguale a
 
 Operatori logici:
 - `and`
 - `or`
 
+## Compilazione
+
+Per compilare l'applicazione è necessario avere il Java Development Kit 11 e Maven installati ed
+eseguire i seguenti comandi da terminale:
+
+`git clone https://github.com/mrgian/progetto-oop.git`
+`cd progetto-oop`
+`mvn clean package`
+
+se la build va a buon fine dovresti ricevere un avviso di questo tipo:
+
+`[INFO] BUILD SUCCESS`
+
+e troverai il l'eseguibile nella directory `target` con il nome `terremoti-api-1.0.jar`
+
+Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1.0.jar`
 
 
 ## Diagramma dei casi d'uso
