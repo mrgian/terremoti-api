@@ -33,7 +33,7 @@ I dati vengono sempre restituiti in formato JSON con i seguenti campi per le inf
 - `valoreMagnitudo` valore della magnitudo
 - `tipoMagnitudo` tipo di magnitudo, locale (ML) o momento (Mw)
 - `ora` ora a cui è avvenuto il terremoto in formato **hh:mm**
-- `data` data in cui è avvenuto il terremoto in formato **dd-MM-yyyy**
+- `data` giorno in cui è avvenuto il terremoto in formato **dd-MM-yyyy**
 - `localita` luogo in cui è avvenuto il terremoto
 - `profondita` profondità alla quale è avvenuto il terremoto espressa in km
 - `link` link da seguire per avere maggiori informazioni sul terremoto
@@ -151,10 +151,10 @@ il seguente esempio filtra i terremoti che sono avvenuti dal 2 luglio 2020:
 ### Lista degli operatori
 
 Operatori condizionali:
-- `>` maggiore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
-- `<` minore di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
-- `>=` maggiore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
-- `<=` minore o uguale di (solo per `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `>` maggiore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `<` minore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `>=` maggiore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**) 
+- `<=` minore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
 - `==` uguale a
 
 Operatori logici:
@@ -167,7 +167,9 @@ Per compilare l'applicazione è necessario avere il Java Development Kit 11 e Ma
 eseguire i seguenti comandi da terminale:
 
 `git clone https://github.com/mrgian/progetto-oop.git`
+
 `cd progetto-oop`
+
 `mvn clean package`
 
 se la build va a buon fine dovresti ricevere un avviso di questo tipo:
