@@ -16,17 +16,25 @@ import it.mrgian.terremotiapi.exception.InvalidFilterException;
 import it.mrgian.terremotiapi.model.Terremoti;
 import it.mrgian.terremotiapi.utils.FileUtils;
 
+/**
+ * Classe che contiene i test JUnit
+ * 
+ * @author Gianmatteo Palmieri
+ */
 class TerremotiAPITests {
 
 	String twitterResponse;
 	String terremotiJsonExpected;
 	String statsJsonExpected;
 
+	/**
+	 * Legge i file di test da confrontare
+	 */
 	@BeforeEach
 	void setUp() {
-		twitterResponse = FileUtils.readFile("/tests/twitterResponseExample.json", getClass());
-		terremotiJsonExpected = FileUtils.readFile("/tests/terremotiExample.json", getClass());
-		statsJsonExpected = FileUtils.readFile("/tests/statsExample.json", getClass());
+		twitterResponse = FileUtils.readFile("/tests/twitterResponseTest.json", getClass());
+		terremotiJsonExpected = FileUtils.readFile("/tests/terremotiTest.json", getClass());
+		statsJsonExpected = FileUtils.readFile("/tests/statsTest.json", getClass());
 	}
 
 	/**
@@ -73,8 +81,8 @@ class TerremotiAPITests {
 	}
 
 	/**
-	 * Effettua il test dell'eccezione InvalidFieldException passando un campo
-	 * sbagliato
+	 * Effettua il test del lancio dell'eccezione InvalidFieldException passando un
+	 * campo sbagliato
 	 */
 	@Test
 	void testFieldException() {
@@ -83,8 +91,8 @@ class TerremotiAPITests {
 	}
 
 	/**
-	 * Effettua il test dell'eccezione InvalidFiterException passando un json non
-	 * valido
+	 * Effettua il test del lancio dell'eccezione InvalidFiterException passando un
+	 * json non valido
 	 */
 	@Test
 	void testFilterException() {

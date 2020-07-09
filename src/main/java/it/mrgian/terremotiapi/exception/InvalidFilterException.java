@@ -5,7 +5,10 @@ import java.util.HashMap;
 import it.mrgian.terremotiapi.utils.JsonUtils;
 
 /**
- * Eccezione generata quando il filtro passato non è valido
+ * Eccezione generata quando il body passato quando si esegue una richiesta GET
+ * o POST non è valido.
+ * 
+ * @author Gianmatteo Palmieri
  */
 public class InvalidFilterException extends Exception {
     private static final long serialVersionUID = 1L;

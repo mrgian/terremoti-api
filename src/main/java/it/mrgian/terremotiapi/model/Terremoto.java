@@ -25,19 +25,19 @@ public class Terremoto {
     private float valoreMagnitudo;
 
     /**
-     * Tipo magnitudo del terremoto (Locale o momento)
+     * Tipo magnitudo del terremoto (locale o momento)
      */
     @JsonPropertyDescription("Tipo magnitudo del terremoto")
     private String tipoMagnitudo;
 
     /**
-     * Ora a cui è avvenuto il terremoto in formato "hh:mm"
+     * Ora a cui è avvenuto il terremoto in formato hh:mm
      */
     @JsonPropertyDescription("Ora del terremoto")
     private String ora;
 
     /**
-     * Data in cui è avvenuto il terremoto in formato "dd-MM-yyyy"
+     * Data in cui è avvenuto il terremoto in formato dd-MM-yyyy
      */
     @JsonPropertyDescription("Data del terremoto")
     private String data;
@@ -74,6 +74,17 @@ public class Terremoto {
         }
     }
 
+    /**
+     * Costruttore che inizializza l'oggetto Terremoto con i valori passati
+     * 
+     * @param valoreMagnitudo
+     * @param tipoMagnitudo
+     * @param ora
+     * @param data
+     * @param localita
+     * @param profondita
+     * @param link
+     */
     @JsonCreator
     public Terremoto(@JsonProperty("valoreMagnitudo") float valoreMagnitudo,
             @JsonProperty("tipoMagnitudo") String tipoMagnitudo, @JsonProperty("ora") String ora,

@@ -1,7 +1,7 @@
 package it.mrgian.terremotiapi.webclient;
 
 import it.mrgian.terremotiapi.model.Terremoti;
-import it.mrgian.terremotiapi.utils.TimeUtils;
+import it.mrgian.terremotiapi.utils.DateUtils;
 import it.mrgian.terremotiapi.webclient.config.*;
 
 import java.text.DateFormat;
@@ -24,10 +24,9 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     private WebClient webClient;
 
     /**
-     * Questo costruttore inizializza il web client
+     * Inizializza il web client
      * 
      * @param config Configurazione contentente baseUrl, token e user
-     * @see it.mrgian.terremotiapi.webclient.TwitterWebClientConfig
      */
     public TwitterWebClient(TwitterWebClientConfig config) {
         this.config = config;
@@ -44,13 +43,13 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     }
 
     /**
-     * Questo metodo ritorna la lista dei terremoti avvenuti in una specifica a
-     * data. A causa delle limitazioni delle API standard di Twitter questo metodo
-     * non restituisce alcun dato se la data è più lontana di 7 giorni dal giorno in
-     * cui viene invocato. (L'API standard di Twitter cerca e restituisce solo i
-     * tweet degli ultimi 7 giorni)
+     * Ritorna la lista dei terremoti avvenuti in una specifica data. A causa delle
+     * limitazioni delle API standard di Twitter questo metodo non restituisce alcun
+     * dato se la data è più lontana di 7 giorni dal giorno in cui viene invocato.
+     * (L'API standard di Twitter cerca e restituisce solo i tweet degli ultimi 7
+     * giorni)
      * 
-     * @param dateString
+     * @param dateString Data in formato yyyy-MM-dd
      * @return ArrayList dei terremoti avvenuti in una specifica data
      */
     public Terremoti getDateTerremoti(String dateString) {
@@ -61,7 +60,7 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
             Date date = dateFormat.parse(dateString);
 
             String params = " since:" + dateFormat.format(date) + " until:"
-                    + dateFormat.format(TimeUtils.addOneDay(date));
+                    + dateFormat.format(DateUtils.addOneDay(date));
             terremoti = getTerremoti(params);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -71,10 +70,12 @@ public class TwitterWebClient implements it.mrgian.terremotiapi.webclient.WebCli
     }
 
     /**
-     * E' possibile passare parametri aggiuntivi alla query di ricerca
+     * Effettua una richiesta all'API di Twitter per ricevere la lista dei tweet
+     * postati dall'utente specificato nella configurazione e convertirla in una
+     * lista di terremoti.
      * 
-     * @param params
-     * @return ArrayList dei terremoti degli ultimi 7 giorni
+     * @param params Parametri aggiuntivi
+     * @return Lista dei terremoti degli ultimi 7 giorni
      */
     public Terremoti getTerremoti(String params) {
         Terremoti terremoti = new Terremoti();

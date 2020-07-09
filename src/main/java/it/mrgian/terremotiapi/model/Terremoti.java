@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.jamsesso.jsonlogic.JsonLogic;
 import it.mrgian.terremotiapi.exception.InvalidFieldException;
 import it.mrgian.terremotiapi.exception.InvalidFilterException;
+import it.mrgian.terremotiapi.utils.DateUtils;
 import it.mrgian.terremotiapi.utils.JsonUtils;
-import it.mrgian.terremotiapi.utils.TimeUtils;
 
 /**
  * Classe che gestisce una lista di terremoti
@@ -40,7 +40,7 @@ public class Terremoti extends ArrayList<Terremoto> {
     }
 
     /**
-     * Restituisce la media dei terremoti al giorno
+     * Restituisce la media dei terremoti in un giorno
      * 
      * @return JSON contentente le statistiche
      */
@@ -118,6 +118,8 @@ public class Terremoti extends ArrayList<Terremoto> {
     }
 
     /**
+     * Aggiunge alla lista i terremoti ricavati dalla risposta all'API di Twitter.
+     * 
      * @param response Json restituito dalla chiamata l'API di Twitter contenente le
      *                 informazioni sui tweet
      */
@@ -137,9 +139,9 @@ public class Terremoti extends ArrayList<Terremoto> {
     }
 
     /**
-     * Questo metodo filtra la lista di terremoti secondo le regole passate nel
-     * filtro. Itera la lista dei terremoti e per ogni terremoto verifica se le
-     * regole specificate nel filtro sono rispettate.
+     * Filtra la lista di terremoti secondo le regole passate nel filtro. Itera la
+     * lista dei terremoti e per ogni terremoto verifica se le regole specificate
+     * nel filtro sono rispettate.
      * 
      * @param filter filtro in formato JSON
      */
@@ -161,7 +163,7 @@ public class Terremoti extends ArrayList<Terremoto> {
                         String name = uppcaseName.substring(0, 1).toLowerCase() + uppcaseName.substring(1);
 
                         if (name.equals("data"))
-                            data.put(name, TimeUtils.dataToInt(value));
+                            data.put(name, DateUtils.dataToInt((String) value));
                         else
                             data.put(name, value);
                     }

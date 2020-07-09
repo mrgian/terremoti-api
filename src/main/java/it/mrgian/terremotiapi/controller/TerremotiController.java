@@ -49,15 +49,17 @@ public class TerremotiController {
 
     /**
      * Gestisce le richieste GET alla rotta "/terremoti/stats". Restituisce in
-     * formato JSON le statistiche sui terremoti.
+     * formato JSON le statistiche di un determinato campo. Se il parametro non
+     * viene passato restituisce le media di terremoti avvenuti in un giorno.
      * 
-     * @return Statistiche sui terremoti in formato JSON
+     * @param field Eventuale campo su cui effettuare le statitistiche
+     * @return Statistiche in formato JSON
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
-        if (field == null) // campo assente
+        if (field == null) // parametro field assente
             return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
-        else {
+        else { // prametro field presente
             try {
                 return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(field), HttpStatus.OK);
             } catch (InvalidFieldException e) {
@@ -69,7 +71,7 @@ public class TerremotiController {
     /**
      * Gestisce le richieste GET alla rotta "/terremoti/metadata"
      * 
-     * @return metadata dell'oggetto Terremoto in formato JSON
+     * @return Metadata dell'oggetto Terremoto in formato JSON
      */
     @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
     public ResponseEntity<Object> getMetadata() {
@@ -79,10 +81,10 @@ public class TerremotiController {
     /**
      * Gestisce le richieste POST alla rotta /terremoti. Restituisce in formato JSON
      * le informazioni sui terremoti filtrati in base al filtro passato nel body
-     * della richiesta. Se il body non è presente viene la lista dei terremoti non
-     * filtrata.
+     * della richiesta. Se il body non è presente viene restituita la lista dei
+     * terremoti non filtrata.
      * 
-     * @param filter filtro in formato JSON
+     * @param filter Filtro in formato JSON
      * @return Lista dei terremoti filtrata
      */
     @RequestMapping(value = "/terremoti", method = RequestMethod.POST, produces = "application/json")
@@ -102,6 +104,16 @@ public class TerremotiController {
      * formato JSON le statistiche del campo sui terremoti filtrati in base al
      * filtro passato nel body della richiesta.
      * 
+     * Se sia il campo che il filtro sono specificati restituisce le statistiche del
+     * campo specificato calcolate dai terremoti filtrati. Se è specificato solo il
+     * filtro restituisce la media di terremoti in un giorno calcolata dai terremoti
+     * filtrati. Se è specificato solo il campo restiuisce le statistiche del campo
+     * specificato calcolate dai terremoti non filtrati. Se nè il campo che il
+     * filtro sono specificati restituisce la media dei terremoti in un giorno
+     * calcolata dai terremoti non filtrati.
+     * 
+     * @param field  Campo su cui effettuare le statistiche
+     * @param filter Body in cui viene specificato il filtro
      * @return Statistiche sui terremoti in formato JSON
      */
     @RequestMapping(value = "/terremoti/stats", method = RequestMethod.POST, produces = "application/json")

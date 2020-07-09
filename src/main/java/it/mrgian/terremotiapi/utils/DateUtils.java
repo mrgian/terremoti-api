@@ -4,19 +4,19 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Classe che contiene metodi statici utili per operazioni sulle date
+ * Classe che contiene metodi statici per operazioni sulle date
  * 
  * @author Gianmatteo Palmieri
  */
-public class TimeUtils {
+public class DateUtils {
 
     /**
-     * Trasforma una data in un int di formato "yyyyMMdd"
+     * Trasforma una data in formato dd-MM-yyyy in un int di formato yyyyMMdd
      * 
-     * @param time Object che rappresenta la data
-     * @return data/ora in int formato "yyyyMMdd"
+     * @param data Data in formato dd-MM-yyyy
+     * @return data/ora in int formato yyyyMMdd
      */
-    public static int dataToInt(Object data) {
+    public static int dataToInt(String data) {
         String startString = (String) data;
         String finalString = startString.split("-")[2];
         finalString += startString.split("-")[1] + startString.split("-")[0];
@@ -27,8 +27,8 @@ public class TimeUtils {
     /**
      * Metodo che incrementa una data di un giorno
      * 
-     * @param date data iniziale
-     * @return data incrementata di un giorno
+     * @param date Data
+     * @return Data incrementata di un giorno
      */
     public static Date addOneDay(Date date) {
         Calendar calendar = Calendar.getInstance();

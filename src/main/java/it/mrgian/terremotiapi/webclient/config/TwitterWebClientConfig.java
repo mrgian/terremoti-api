@@ -3,8 +3,8 @@ package it.mrgian.terremotiapi.webclient.config;
 import org.springframework.stereotype.Component;
 
 /**
- * Classe di configurazione del webclient per effetture richieste all'API di
- * twitter.
+ * Classe di configurazione del webclient che effettua richieste all'API di
+ * Twitter.
  * 
  * @author Gianmatteo Palmieri
  */
@@ -18,7 +18,7 @@ public class TwitterWebClientConfig extends WebClientConfig {
      * @param baseUrl Url di base (Es.:
      *                https://api.twitter.com/1.1/search/tweets.json)
      * @param token   Token di accesso usato per l'autenticazione
-     * @param user    Utente Twitter da cui scaricare il dati
+     * @param user    Utente Twitter da cui scaricare i dati
      */
     public TwitterWebClientConfig(String baseUrl, String token, String user) {
         super(baseUrl, token);

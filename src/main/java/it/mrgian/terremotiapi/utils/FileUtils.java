@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Classe che contiente il metodo statico per la lettura dei file
+ * Classe che contiente il metodi statici per operazioni sui file
  * 
  * @author Gianmatteo Palmieri
  */
@@ -13,8 +13,8 @@ public class FileUtils {
     /**
      * Legge il contenuto di un file di testo presente nella cartella "resources"
      * 
-     * @param name
-     * @return il contenuto del file
+     * @param name Nome del file
+     * @return Contenuto del file
      */
     public static String readFile(String path, @SuppressWarnings("rawtypes") Class theclass) {
         String content = "";
