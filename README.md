@@ -4,11 +4,32 @@
 Open Source REST API per informazioni sui terremoti
 </h3>
 
+## Descrizione
+
 Questa REST API permette di ottenere informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
 I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** ([@INGVterremoti](https://twitter.com/INGVterremoti)).
 
+## Sommario
 
-## Uso
+* [AppQuake](https://github.com/mrgian/progetto-oop#appquake)
+* [Utilizzo](https://github.com/mrgian/progetto-oop#utilizzo)
+* [Rotte](https://github.com/mrgian/progetto-oop#rotte)
+* [Formato dei dati](https://github.com/mrgian/progetto-oop#formato-dei-dati)
+* [Esempi](https://github.com/mrgian/progetto-oop#esempi)
+* [Filtri](https://github.com/mrgian/progetto-oop#filtri)
+* [Compilazione](https://github.com/mrgian/progetto-oop#compilazione)
+
+## AppQuake
+
+<img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_2.png" width="20%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_3.png" width="20%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_4.png" width="20%">
+
+Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS chiamata AppQuake che ne fa uso, permette di visualizzare con una semplice interfaccia grafica le informazioni sugli ultimi terremoti.
+
+L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter) e il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake)
+
+AppQuake per Android è disponibile al download sul Google Play Store a questo indirizzo (in attessa di pubblicazione)
+
+## Utilizzo
 
 Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://mrgian.it/terremoti` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
@@ -188,3 +209,7 @@ Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1
 ## Diagramma delle classi
 
 <img src="https://github.com/mrgian/progetto-oop/raw/master/images/uml/class_diagram.png">
+
+## Credits
+
+Progetto interamente sviluppato da [Gianmatteo Palmieri](https://github.com/mrgian)
