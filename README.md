@@ -4,13 +4,13 @@
 Open Source REST API per informazioni sui terremoti
 </h3>
 
-Questa REST API permette di ottenere informazioni sui terremoti degli ultimi 7 giorni registrati dalla **Rete Sismica Nazionale**.
+Questa REST API permette di ottenere informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
 I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** ([@INGVterremoti](https://twitter.com/INGVterremoti)).
 
 
 ## Uso
 
-Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://mrgian.it/terremoti` (oppure all'url `http://localhost:8080` se si fa partire l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
+Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://mrgian.it/terremoti` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
 ## Rotte
 
@@ -18,7 +18,7 @@ Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url
 |----|-------------------------------------|---------------------------------------------------------------|
 |GET |`/terremoti`                         |Restituisce le informazioni sui terremoti  |
 |GET |`/terremoti/stats`                   |Restituisce la media di terremoti al giorno|
-|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`|
+|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
 |GET |`/terremoti/metadata`                |Restituisce i metadati                                         |
 |POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
 |POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
@@ -139,7 +139,7 @@ il seguente esempio filtra i terremoti che sono avvenuti dal 2 luglio 2020:
 
 ```
 {
-    "<=": [
+    ">=": [
         {
             "var": "data"
         },
