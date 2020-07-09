@@ -27,7 +27,7 @@ Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS 
 
 L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter) e il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake)
 
-AppQuake per Android è disponibile al download sul Google Play Store a questo indirizzo (in attessa di pubblicazione)
+AppQuake per Android è disponibile al download sul Google Play Store a [questo indirizzo](https://play.google.com/store/apps/details?id=it.mrgian.appquake)
 
 ## Utilizzo
 
