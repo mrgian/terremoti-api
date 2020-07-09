@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.mrgian.terremotiapi"},{"l":"it.mrgian.terremotiapi.controller"},{"l":"it.mrgian.terremotiapi.exception"},{"l":"it.mrgian.terremotiapi.model"},{"l":"it.mrgian.terremotiapi.utils"},{"l":"it.mrgian.terremotiapi.webclient"},{"l":"it.mrgian.terremotiapi.webclient.config"}]
