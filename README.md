@@ -11,13 +11,17 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 
 ## Sommario
 
-* [AppQuake](https://github.com/mrgian/progetto-oop#appquake)
-* [Utilizzo](https://github.com/mrgian/progetto-oop#utilizzo)
-* [Rotte](https://github.com/mrgian/progetto-oop#rotte)
-* [Formato dei dati](https://github.com/mrgian/progetto-oop#formato-dei-dati)
-* [Esempi](https://github.com/mrgian/progetto-oop#esempi)
-* [Filtri](https://github.com/mrgian/progetto-oop#filtri)
-* [Compilazione](https://github.com/mrgian/progetto-oop#compilazione)
+* [AppQuake](#appquake)
+* [Utilizzo](#utilizzo)
+* [Rotte](#rotte)
+* [Formato dei dati](#formato-dei-dati)
+* [Esempi](#esempi)
+* [Filtri](#filtri)
+* [Compilazione](#compilazione)
+* [Configurazione](#configurazione)
+* [Diagramma dei casi d'uso](#diagramma-dei-casi-duso)
+* [Diagramma delle classi](#diagramma-delle-classi)
+* [Credits](#credits)
 
 ## AppQuake
 
@@ -201,6 +205,13 @@ e troverai il l'eseguibile nella directory `target` con il nome `terremoti-api-1
 
 Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1.0.jar`
 
+## Configurazione
+
+É possibile modificare la configurazione di default modificando i dati presenti nel file JSON `src/main/resources/defaultConfig.json`.
+
+- `baseUrl` url dell'API da interrogare per ricavare i dati (senza parametri)
+- `token` bearer token per l'autenticazione
+- `user` username dell'account Twitter da cui ricavare i dati
 
 ## Diagramma dei casi d'uso
 
