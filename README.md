@@ -7,6 +7,7 @@ Open Source REST API per informazioni sui terremoti
 ## Descrizione
 
 Questa REST API permette di ottenere informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
+
 I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** ([@INGVterremoti](https://twitter.com/INGVterremoti)).
 
 ## Sommario
@@ -29,9 +30,9 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 
 Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS chiamata AppQuake che ne fa uso, permette di visualizzare con una semplice interfaccia grafica le informazioni sugli ultimi terremoti.
 
-L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter) e il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake)
+L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter) ed il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake).
 
-AppQuake per Android è disponibile al download sul Google Play Store a [questo indirizzo](https://play.google.com/store/apps/details?id=it.mrgian.appquake)
+AppQuake per Android è disponibile al download sul Google Play Store a [questo indirizzo](https://play.google.com/store/apps/details?id=it.mrgian.appquake).
 
 ## Utilizzo
 
@@ -45,8 +46,8 @@ Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url
 |GET |`/terremoti/stats`                   |Restituisce la media di terremoti al giorno|
 |GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
 |GET |`/terremoti/metadata`                |Restituisce i metadati                                         |
-|POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
-|POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione **Filtri**)|
+|POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
 |POST|`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
 
 
@@ -57,10 +58,10 @@ I dati vengono sempre restituiti in formato JSON con i seguenti campi per le inf
 
 - `valoreMagnitudo` valore della magnitudo
 - `tipoMagnitudo` tipo di magnitudo, locale (ML) o momento (Mw)
-- `ora` ora a cui è avvenuto il terremoto in formato **hh:mm**
-- `data` giorno in cui è avvenuto il terremoto in formato **dd-MM-yyyy**
+- `ora` ora a cui è avvenuto il terremoto in formato *hh:mm*
+- `data` giorno in cui è avvenuto il terremoto in formato *dd-MM-yyyy*
 - `localita` luogo in cui è avvenuto il terremoto
-- `profondita` profondità alla quale è avvenuto il terremoto espressa in km
+- `profondita` profondità alla quale è avvenuto il terremoto espressa in *km*
 - `link` link da seguire per avere maggiori informazioni sul terremoto
 
 e con i seguenti campi per le statistiche:
@@ -176,10 +177,10 @@ il seguente esempio filtra i terremoti che sono avvenuti dal 2 luglio 2020:
 ### Lista degli operatori
 
 Operatori condizionali:
-- `>` maggiore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
-- `<` minore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
-- `>=` maggiore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**) 
-- `<=` minore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato **yyyyMMdd**)
+- `>` maggiore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato *yyyyMMdd*)
+- `<` minore di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato *yyyyMMdd*)
+- `>=` maggiore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato *yyyyMMdd*) 
+- `<=` minore o uguale di (solo per i campi `valoreMagnitudo`, `profondita`, `data` in formato *yyyyMMdd*)
 - `==` uguale a
 
 Operatori logici:
@@ -207,11 +208,11 @@ Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1
 
 ## Configurazione
 
-É possibile modificare la configurazione di default modificando i dati presenti nel file JSON `src/main/resources/defaultConfig.json`.
+É possibile modificare la configurazione di default modificando i dati presenti nel file JSON `src/main/resources/defaultConfig.json`, dove:
 
-- `baseUrl` url dell'API da interrogare per ricavare i dati (senza parametri)
-- `token` bearer token per l'autenticazione
-- `user` username dell'account Twitter da cui ricavare i dati
+- `baseUrl` è url dell'API da interrogare per ricavare i dati (senza parametri)
+- `token` è il bearer token per l'autenticazione
+- `user` è l'username dell'account Twitter da cui ricavare i dati
 
 ## Diagramma dei casi d'uso
 
