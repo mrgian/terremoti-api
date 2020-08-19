@@ -120,6 +120,11 @@ public class Terremoto {
                 String tipo = "Mw";
                 this.valoreMagnitudo = valore;
                 this.tipoMagnitudo = tipo;
+            } else if (tweet.contains(" mb ")) {
+                float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " mb ", " ore "));
+                String tipo = "mb";
+                this.valoreMagnitudo = valore;
+                this.tipoMagnitudo = tipo;
             } else
                 throw new MissingTweetFieldException("Valore magnitudo mancante");
 
