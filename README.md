@@ -36,7 +36,7 @@ AppQuake per Android è disponibile al download sul Google Play Store a [questo 
 
 ## Utilizzo
 
-Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://mrgian.it/terremoti` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
+Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://gian.im/terremoti` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
 ## Rotte
 
@@ -74,7 +74,7 @@ e con i seguenti campi per le statistiche:
 
 ## Esempi
 
-`GET https://mrgian.it/terremoti` restituisce un JSON di questo tipo:
+`GET https://gian.im/terremoti` restituisce un JSON di questo tipo:
 ```
 [
 	{
@@ -98,14 +98,14 @@ e con i seguenti campi per le statistiche:
 ]
 ```
 
-`GET https://mrgian.it/terremoti/stats` restituisce un JSON di questo tipo:
+`GET https://gian.im/terremoti/stats` restituisce un JSON di questo tipo:
 ```
 {
 	"mediaGiorno": 1.6666666,
 }
 ```
 
-`GET https://mrgian.it/terremoti/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
+`GET https://gian.im/terremoti/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
 ```
 {
     "min": 2.5,
