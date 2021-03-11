@@ -42,7 +42,7 @@ public class TerremotiController {
      * 
      * @return Informazioni sui terremoti in formato JSON
      */
-    @RequestMapping(value = "/terremoti", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getTerremoti() {
         return new ResponseEntity<>(twitterWebClient.getLatestTerremoti(), HttpStatus.OK);
     }
@@ -55,7 +55,7 @@ public class TerremotiController {
      * @param field Eventuale campo su cui effettuare le statitistiche
      * @return Statistiche in formato JSON
      */
-    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/stats", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Object> getStatsTerremoti(@RequestParam(required = false) String field) {
         if (field == null) // parametro field assente
             return new ResponseEntity<>(twitterWebClient.getLatestTerremoti().getStats(), HttpStatus.OK);
@@ -73,7 +73,7 @@ public class TerremotiController {
      * 
      * @return Metadata dell'oggetto Terremoto in formato JSON
      */
-    @RequestMapping(value = "/terremoti/metadata", produces = "application/json")
+    @RequestMapping(value = "/metadata", produces = "application/json")
     public ResponseEntity<Object> getMetadata() {
         return new ResponseEntity<Object>(Terremoto.getMetadata(), HttpStatus.OK);
     }
@@ -87,7 +87,7 @@ public class TerremotiController {
      * @param filter Filtro in formato JSON
      * @return Lista dei terremoti filtrata
      */
-    @RequestMapping(value = "/terremoti", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getFilteredTerremoti(@RequestBody(required = false) String filter) {
         if (filter != null) {
             try {
@@ -116,7 +116,7 @@ public class TerremotiController {
      * @param filter Body in cui viene specificato il filtro
      * @return Statistiche sui terremoti in formato JSON
      */
-    @RequestMapping(value = "/terremoti/stats", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/stats", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Object> getStatsFilteredTerremoti(@RequestParam(required = false) String field,
             @RequestBody(required = false) String filter) {
         if (field != null && filter == null) { // campo assente ma filtro presente

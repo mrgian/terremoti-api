@@ -36,19 +36,19 @@ AppQuake per Android è disponibile al download sul Google Play Store a [questo 
 
 ## Utilizzo
 
-Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://gian.im/terremoti` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
+Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://api.terremoti.gian.im` (oppure all'url `http://localhost:8080` se si esegue l'applicazione su una macchina locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
 ## Rotte
 
-|Tipo|Rotta                                |Descrizione                                                    |
-|----|-------------------------------------|---------------------------------------------------------------|
-|GET |`/terremoti`                         |Restituisce le informazioni sui terremoti  |
-|GET |`/terremoti/stats`                   |Restituisce la media di terremoti al giorno|
-|GET |`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
-|GET |`/terremoti/metadata`                |Restituisce i metadati                                         |
-|POST|`/terremoti`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`/terremoti/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`/terremoti/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|Tipo|Rotta                                                   |Descrizione                                                    |
+|----|--------------------------------------------------------|---------------------------------------------------------------|
+|GET |`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti                      |
+|GET |`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno                    |
+|GET |`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|GET |`https://api.terremoti.gian.im/metadata`                |Restituisce i metadati                                         |
+|POST|`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
 
 
 
@@ -74,7 +74,7 @@ e con i seguenti campi per le statistiche:
 
 ## Esempi
 
-`GET https://gian.im/terremoti` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im/terremoti` restituisce un JSON di questo tipo:
 ```
 [
 	{
@@ -98,14 +98,14 @@ e con i seguenti campi per le statistiche:
 ]
 ```
 
-`GET https://gian.im/terremoti/stats` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im/stats` restituisce un JSON di questo tipo:
 ```
 {
 	"mediaGiorno": 1.6666666,
 }
 ```
 
-`GET https://gian.im/terremoti/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
 ```
 {
     "min": 2.5,
