@@ -1,7 +1,7 @@
-it.mrgian.terremotiapi
-it.mrgian.terremotiapi.controller
-it.mrgian.terremotiapi.exception
-it.mrgian.terremotiapi.model
-it.mrgian.terremotiapi.utils
-it.mrgian.terremotiapi.webclient
-it.mrgian.terremotiapi.webclient.config
+im.gian.terremoti.api
+im.gian.terremoti.api.controller
+im.gian.terremoti.api.exception
+im.gian.terremoti.api.model
+im.gian.terremoti.api.utils
+im.gian.terremoti.api.webclient
+im.gian.terremoti.api.webclient.config
