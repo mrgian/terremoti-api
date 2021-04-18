@@ -107,14 +107,13 @@ public class Terremoto {
      */
     private void parseTweet(String tweet) throws MissingTweetFieldException {
         try {
-            // parsing magnitudo locale
+            // parsing magnitudo
             if (tweet.contains(" ML ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " ML ", " ore "));
                 String tipo = "ML";
                 this.valoreMagnitudo = valore;
                 this.tipoMagnitudo = tipo;
             }
-            // parsing magnitudo momento
             else if (tweet.contains(" Mw ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Mw ", " ore "));
                 String tipo = "Mw";
@@ -123,6 +122,11 @@ public class Terremoto {
             } else if (tweet.contains(" mb ")) {
                 float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " mb ", " ore "));
                 String tipo = "mb";
+                this.valoreMagnitudo = valore;
+                this.tipoMagnitudo = tipo;
+            } else if (tweet.contains(" Md ")) {
+                float valore = Float.parseFloat(StringUtils.substringBetween(tweet, " Md ", " ore "));
+                String tipo = "Md";
                 this.valoreMagnitudo = valore;
                 this.tipoMagnitudo = tipo;
             } else
