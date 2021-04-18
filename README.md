@@ -34,19 +34,19 @@ L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flu
 
 ## Utilizzo
 
-Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `http://localhost:8080` specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
+Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://api.terremoti.gian.im` (oppure all'url `http://localhost:8000` se si esegue l'applicazione in locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
 ## Rotte
 
 |Tipo|Rotta                                                   |Descrizione                                                    |
 |----|--------------------------------------------------------|---------------------------------------------------------------|
-|GET |`http://localhost:8080`                         |Restituisce le informazioni sui terremoti                      |
-|GET |`http://localhost:8080/stats`                   |Restituisce la media di terremoti al giorno                    |
-|GET |`http://localhost:8080/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
-|GET |`http://localhost:8080/metadata`                |Restituisce i metadati                                         |
-|POST|`http://localhost:8080`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`http://localhost:8080/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`hhttp://localhost:8080/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|GET |`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti                      |
+|GET |`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno                    |
+|GET |`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|GET |`https://api.terremoti.gian.im/metadata`                |Restituisce i metadati                                         |
+|POST|`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
 
 
 
@@ -72,7 +72,7 @@ e con i seguenti campi per le statistiche:
 
 ## Esempi
 
-`GET http://localhost:8080` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im` restituisce un JSON di questo tipo:
 ```
 [
 	{
@@ -96,14 +96,14 @@ e con i seguenti campi per le statistiche:
 ]
 ```
 
-`GET http://localhost:8080/stats` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im/stats` restituisce un JSON di questo tipo:
 ```
 {
 	"mediaGiorno": 1.6666666,
 }
 ```
 
-`GET http://localhost:8080/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
+`GET https://api.terremoti.gian.im/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
 ```
 {
     "min": 2.5,
