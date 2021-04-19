@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/mrgian/progetto-oop/raw/master/images/icons/icon.png" height=100></p>
+<p align="center"><img src="https://github.com/mrgian/terremoti-api/raw/master/images/icons/icon.png" height=100></p>
 <h1 align="center">Terremoti REST API</h1>
 <h3 align="center">
 Open Source REST API per informazioni sui terremoti
@@ -190,7 +190,7 @@ Operatori logici:
 Per compilare l'applicazione è necessario avere il Java Development Kit 11 e Maven installati ed
 eseguire i seguenti comandi da terminale:
 
-`git clone https://github.com/mrgian/progetto-oop.git`
+`git clone https://github.com/mrgian/terremoti-api.git`
 
 `cd progetto-oop`
 
@@ -214,11 +214,11 @@ Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1
 
 ## Diagramma dei casi d'uso
 
-<img src="https://github.com/mrgian/progetto-oop/raw/master/images/uml/use_case_diagram.png" width="50%">
+<img src="https://github.com/mrgian/terremoti-api/raw/master/images/uml/use_case_diagram.png" width="50%">
 
 ## Diagramma delle classi
 
-<img src="https://github.com/mrgian/progetto-oop/raw/master/images/uml/class_diagram.png">
+<img src="https://github.com/mrgian/terremoti-api/raw/master/images/uml/class_diagram.png">
 
 ## Credits
 
