@@ -26,7 +26,7 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 
 ## AppQuake
 
-<img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_2.png" width="20%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_3.png" width="20%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_4.png" width="20%">
+<p align="center"><img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_2.png" width="25%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_3.png" width="25%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_4.png" width="25%"></p>
 
 Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS chiamata AppQuake che ne fa uso, permette di visualizzare con una semplice interfaccia grafica le informazioni sugli ultimi terremoti.
 
