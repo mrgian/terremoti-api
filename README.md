@@ -30,7 +30,7 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 
 Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS chiamata AppQuake che ne fa uso, permette di visualizzare con una semplice interfaccia grafica le informazioni sugli ultimi terremoti.
 
-L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter) ed il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake).
+L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter), il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake) ed è disponibile al download sul [Google Play Store](https://play.google.com/store/apps/details?id=it.mrgian.appquake)
 
 ## Utilizzo
 
