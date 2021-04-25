@@ -6,7 +6,7 @@ Open Source REST API per informazioni sui terremoti
 
 ## Descrizione
 
-Questa REST API permette di ottenere informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
+Questa REST API permette di ottenere le informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
 
 I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazionale di Geofisica e Vulcanologia** ([@INGVterremoti](https://twitter.com/INGVterremoti)).
 
