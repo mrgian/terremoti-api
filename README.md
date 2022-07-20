@@ -4,6 +4,8 @@
 Open Source REST API per informazioni sui terremoti
 </h3>
 
+Progetto sviluppato per sostenere l'esame di Programmazione ad Oggetti (Università Politecnica delle Marche, anno accademico 2020/2021)
+
 ## Descrizione
 
 Questa REST API permette di ottenere le informazioni sui terremoti registrati dalla **Rete Sismica Nazionale** negli ultimi sette giorni.
