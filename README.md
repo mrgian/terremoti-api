@@ -192,7 +192,7 @@ Operatori logici:
 Per compilare l'applicazione è necessario avere il Java Development Kit 11 e Maven installati ed
 eseguire i seguenti comandi da terminale:
 
-`git clone https://github.com/mrgian/terremoti-api.git`
+`git clone https://github.com/gintr0nic/terremoti-api.git`
 
 `cd progetto-oop`
 
@@ -224,4 +224,4 @@ Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1
 
 ## Credits
 
-Progetto interamente sviluppato da [Gianmatteo Palmieri](https://github.com/mrgian)
+Progetto interamente sviluppato da [Gianmatteo Palmieri](https://github.com/gintr0nic)
