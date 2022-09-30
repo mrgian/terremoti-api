@@ -224,4 +224,4 @@ Per eseguire l'applicazione basta eseguire il comando `java -jar terremoti-api-1
 
 ## Credits
 
-Progetto interamente sviluppato da [Gianmatteo Palmieri](https://github.com/gintr0nic)
+Progetto interamente sviluppato da [Gianmatteo Palmieri](https://github.com/mrgian)
