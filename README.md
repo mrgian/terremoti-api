@@ -14,7 +14,6 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 
 ## Sommario
 
-* [AppQuake](#appquake)
 * [Utilizzo](#utilizzo)
 * [Rotte](#rotte)
 * [Formato dei dati](#formato-dei-dati)
@@ -26,29 +25,21 @@ I dati sono ricavati dai tweet postati dall'account Twitter dell'**Istituto Nazi
 * [Diagramma delle classi](#diagramma-delle-classi)
 * [Credits](#credits)
 
-## AppQuake
-
-<p align="center"><img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_2.png" width="25%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_3.png" width="25%"> <img src="https://github.com/mrgian/appquake/raw/master/screenshot/screenshot_4.png" width="25%"></p>
-
-Al fine di dare un'utilità a questa API ho realizzato un'app per Android e iOS chiamata AppQuake che ne fa uso, permette di visualizzare con una semplice interfaccia grafica le informazioni sugli ultimi terremoti.
-
-L'app è stata scritta in Dart con il framework [Flutter](https://github.com/flutter/flutter), il codice sorgente è disponibile in [questo repository](https://github.com/mrgian/appquake) ed è disponibile al download sul [Google Play Store](https://play.google.com/store/apps/details?id=it.mrgian.appquake)
-
 ## Utilizzo
 
-Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `https://api.terremoti.gian.im` (oppure all'url `http://localhost:8000` se si esegue l'applicazione in locale) specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
+Per usufruire dell'API è necessario fare delle richieste `GET` o `POST` all'url `http://localhost:8000` specificando la rotta e il body della richiesta a seconda dei dati che si vuole ricevere.
 
 ## Rotte
 
 |Tipo|Rotta                                                   |Descrizione                                                    |
 |----|--------------------------------------------------------|---------------------------------------------------------------|
-|GET |`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti                      |
-|GET |`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno                    |
-|GET |`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
-|GET |`https://api.terremoti.gian.im/metadata`                |Restituisce i metadati                                         |
-|POST|`https://api.terremoti.gian.im`                         |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`https://api.terremoti.gian.im/stats`                   |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
-|POST|`https://api.terremoti.gian.im/stats?field=<campo>`     |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|GET |`/`			                              |Restituisce le informazioni sui terremoti                      |
+|GET |`/stats`              				      |Restituisce la media di terremoti al giorno                    |
+|GET |`/stats?field=<campo>`				       |Restituisce le statistiche del campo specificato (i campi validi sono `valoreMagnitudo` e `profondita`)|
+|GET |`/metadata`                                             |Restituisce i metadati                                         |
+|POST|`/`                                                     |Restituisce le informazioni sui terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`/stats`                                                |Restituisce la media di terremoti al giorno, calcolata solo con i terremoti filtrati con le regole specificate nel body della richiesta (vedi la sezione [Filtri](#filtri))|
+|POST|`/stats?field=<campo>`                                   |Restituisce le statistiche del campo specificato, calcolate solo con i terremoti filtrati con le regole specificate nel body della richiesta (i campi validi sono `valoreMagnitudo` e `profondita`)|
 
 
 
@@ -74,7 +65,7 @@ e con i seguenti campi per le statistiche:
 
 ## Esempi
 
-`GET https://api.terremoti.gian.im` restituisce un JSON di questo tipo:
+`GET http://localhost:8000` restituisce un JSON di questo tipo:
 ```
 [
 	{
@@ -98,14 +89,14 @@ e con i seguenti campi per le statistiche:
 ]
 ```
 
-`GET https://api.terremoti.gian.im/stats` restituisce un JSON di questo tipo:
+`GET http://localhost:8000/stats` restituisce un JSON di questo tipo:
 ```
 {
 	"mediaGiorno": 1.6666666,
 }
 ```
 
-`GET https://api.terremoti.gian.im/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
+`GET http://localhost:8000/stats?field=valoreMagnitudo` restituisce un JSON di questo tipo:
 ```
 {
     "min": 2.5,
